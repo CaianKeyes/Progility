@@ -7,6 +7,9 @@ function Login() {
   const handleSubmit = e => {
     e.preventDefault();
 
+    setEmail('');
+    setPassword('');
+
     console.log(email, password);
   }
 
