@@ -7,6 +7,28 @@ async function getUsers (ctx) {
   ctx.body = users;
 }
 
+async function register (ctx) {
+  const user = await Users.findOne({
+    where: { email: ctx.request.body.email }
+  });
+
+  if (user) {
+    ctx.body = 'Email already exsists';
+    console.log('Email already exsists');
+  } else {
+    const newUser = await Users.create({
+      username: ctx.request.body.username,
+      email: ctx.request.body.email,
+      password: ctx.request.body.password,
+      tasksCompleted: 0,
+      hoursCompleted: 0,
+    });
+    
+    ctx.body = newUser;
+  }
+}
+
 module.exports = {
   getUsers,
+  register
 }

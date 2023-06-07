@@ -15,6 +15,18 @@ const Users = sequelize.define('Users', {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     allowNull: true
   },
+  username: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  email: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  password: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
   tasksCompleted: {
     type: DataTypes.INTEGER,
     allowNull: false
