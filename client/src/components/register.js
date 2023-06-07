@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import { register } from '../apiService';
 
-function Register() {
+function Register({ onData, profile }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [data, setData] = useState('');
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    console.log(profile);
+  }, [profile]);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -29,8 +28,8 @@ function Register() {
     setEmail('');
     setPassword('');
 
-    const profile = await register({ username, email, password });
-    setData(profile);
+    const userProfile = await register({ username, email, password });
+    onData(userProfile);
   }
 
   return <>
@@ -58,8 +57,8 @@ function Register() {
     </form>
     <div>
       <h1>Profile:</h1>
-      <p>username: {data.username}</p>
-      <p>email: {data.email}</p>
+      <p>username: {profile.username}</p>
+      <p>email: {profile.email}</p>
     </div>
   </>
 }
