@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { register } from '../apiService';
 
 function Register() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [data, setData] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -23,7 +25,7 @@ function Register() {
     setEmail('');
     setPassword('');
 
-    console.log(username, email, password);
+    setData(register({ username, email, password }));
   }
 
   return <>
