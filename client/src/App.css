@@ -1,0 +1,43 @@
+.register {
+  background-color: white; 
+  border-radius: 15px;
+  margin: 40px;
+  padding: 15px;
+  padding-left: 50px;
+}
+
+.form {
+  margin: 0;
+  font-family: arial;
+}
+
+.input {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 90%;
+  height: 25px;
+  border-radius: 20px;
+  border: none;
+  background-color: #e3e3e3;
+  font-size: 17px;
+  padding-left: 10px;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.check {
+  height: 15px;
+}
+
+.submit {
+  background-color: #f19406;
+  height: 25px;
+  width: 100px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+}

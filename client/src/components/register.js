@@ -44,39 +44,46 @@ function Register({ onData, profile }) {
   }
 
   return <>
-    <form onSubmit={handleSubmit}>
-      <h2>Sign-up</h2>
+    <div className='register'>
+      <form onSubmit={handleSubmit}>
+        <h2 className='form title'>Sign-up</h2>
 
-      <h3>username:</h3>
-      <input 
-        type='text' 
-        value={username || ''}
-        onChange={e => setUsername(e.target.value)}
-      ></input>
+        <h3 className='form'>Username:</h3>
+        <input 
+          type='text' 
+          value={username || ''}
+          onChange={e => setUsername(e.target.value)}
+          className='form input'
+        ></input>
 
-      <h3>email:</h3>
-      <input 
-        type='email' 
-        value={email || ''}
-        onChange={e => setEmail(e.target.value)}
-      ></input>
+        <h3 className='form'>Email:</h3>
+        <input 
+          type='email' 
+          value={email || ''}
+          onChange={e => setEmail(e.target.value)}
+          className='form input'
+        ></input>
 
-      <h3>password:</h3>
-      <input 
-        type='password' 
-        value={password || ''}
-        onChange={e => setPassword(e.target.value)}
-      ></input>
+        <h3 className='form'>Password:</h3>
+        <input 
+          type='password' 
+          value={password || ''}
+          onChange={e => setPassword(e.target.value)}
+          className='form input'
+        ></input>
 
-      <h3>Admin?</h3>
-      <input
-        type='checkbox'
-        checked={isChecked}
-        onChange={handleCheckbox}
-      ></input>
+        <h3 className='form'>Admin:</h3>
+        <input
+          type='checkbox'
+          checked={isChecked}
+          onChange={handleCheckbox}
+          className='form check'
+        ></input>
+        <br />
 
-      <button type='submit'>Login</button>
-    </form>
+        <button className='form submit' type='submit'>Login</button>
+      </form>
+    </div>
     <div>
       <h1>Profile:</h1>
       <p>username: {profile.username}</p>
