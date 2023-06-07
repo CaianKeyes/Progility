@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import { login } from '../apiService'
 
-function Login() {
+function Login({ onData }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     setEmail('');
     setPassword('');
 
-    console.log(email, password);
+    const profile = await login({ email, password });
+    onData(profile);
   }
 
   return <>

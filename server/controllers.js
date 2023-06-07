@@ -28,7 +28,25 @@ async function register (ctx) {
   }
 }
 
+async function login (ctx) {
+  const user = await Users.findOne({
+    where: {email: ctx.request.body.email}
+  });
+
+  if (!user) {
+    ctx.status = 404;
+    ctx.body = 'email incorrect';
+  } else if (user.password !== ctx.request.body.password) {
+    ctx.status = 404;
+    ctx.body = 'password incorrect';
+  } else {
+    ctx.status = 200;
+    ctx. body = user;
+  }
+}
+
 module.exports = {
   getUsers,
-  register
+  register,
+  login
 }
