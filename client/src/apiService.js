@@ -28,3 +28,9 @@ export async function login(user) {
   const json = await res.json();
   return json;
 }
+
+export async function logOut() {
+  const res = await fetch('http://localhost:3003/logout');
+  const json = await res.json();
+  return json;
+}

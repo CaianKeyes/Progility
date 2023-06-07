@@ -25,15 +25,5 @@ const Workspaces = sequelize.define('Workspaces', {
   },
 });
 
-const bootstrap = async () => {
-  try {
-    await Workspaces.sync({ force: true });
-    console.log('Tasks synced and connected');
-  } catch(err) {
-    console.log('could not connect to Tasks table');
-    console.error(err);
-  }
-}
-bootstrap();
 
 module.exports = Workspaces;

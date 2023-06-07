@@ -48,5 +48,5 @@ async function login (ctx) {
 module.exports = {
   getUsers,
   register,
-  login
+  login,
 }

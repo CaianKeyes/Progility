@@ -33,15 +33,4 @@ const Tasks = sequelize.define('Tasks', {
   }
 });
 
-const bootstrap = async () => {
-  try {
-    await Tasks.sync({ force: true });
-    console.log('Tasks synced and connected');
-  } catch(err) {
-    console.log('could not connect to Tasks table');
-    console.error(err);
-  }
-}
-bootstrap();
-
 module.exports = Tasks;

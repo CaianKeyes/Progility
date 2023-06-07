@@ -2,7 +2,7 @@ const Router = require('koa-router');
 const { 
   getUsers,
   register,
-  login
+  login,
 } = require('./controllers');
 
 const router = new Router();
