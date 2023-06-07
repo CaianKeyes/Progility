@@ -7,6 +7,11 @@ async function getUsers (ctx) {
   ctx.body = users;
 }
 
+async function getWorkspaces (ctx) {
+  const workspaces = await Workspaces.findAll();
+  ctx.body = workspaces;
+}
+
 async function register (ctx) {
   const user = await Users.findOne({
     where: { email: ctx.request.body.email }
@@ -45,8 +50,24 @@ async function login (ctx) {
   }
 }
 
+async function workspace (ctx) {
+  const workspace = await Workspaces.create({
+    adminId: ctx.request.body.userID,
+    groupIds: [ctx.request.body.userID],
+  })
+
+  await Users.update(
+    { workspaceId: workspace.id },
+    { where: { id: ctx.request.body.userID } }
+  )
+
+  ctx.body = workspace;
+}
+
 module.exports = {
   getUsers,
   register,
   login,
+  workspace,
+  getWorkspaces
 }
