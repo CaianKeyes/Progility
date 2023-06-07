@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { register } from '../apiService';
 
 function Register() {
@@ -7,7 +7,11 @@ function Register() {
   const [password, setPassword] = useState('');
   const [data, setData] = useState('');
 
-  const handleSubmit = e => {
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     if (!username || !email || !password) {
@@ -25,7 +29,8 @@ function Register() {
     setEmail('');
     setPassword('');
 
-    setData(register({ username, email, password }));
+    const profile = await register({ username, email, password });
+    setData(profile);
   }
 
   return <>
@@ -51,6 +56,11 @@ function Register() {
       ></input>
       <button type='submit'>Login</button>
     </form>
+    <div>
+      <h1>Profile:</h1>
+      <p>username: {data.username}</p>
+      <p>email: {data.email}</p>
+    </div>
   </>
 }
 
