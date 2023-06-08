@@ -16,9 +16,10 @@ function Task ({task, profile, selector, workspace}) {
     if (selector == 'general') {
       setTaskBtn(<button className="submit accept" onClick={handleAccept}>Accept</button>)
     } else if (selector == 'personal') {
-      setTaskBtn(<div className="form">
-        <button onClick={handleComplete} className="submit">Complete</button>
-        <button className="submit">Cancel</button>
+      setTaskBtn(<div className="accept">
+        <button onClick={handleComplete} className="submit personal_button">Complete</button>
+        <br />
+        <button className="submit personal_button">Cancel</button>
       </div>)
     } else if (selector == 'active') {
       setTaskBtn(<p className="form">User:</p>)
@@ -28,7 +29,7 @@ function Task ({task, profile, selector, workspace}) {
   return <div className="task">
     <div className="left">
       <h2 className="form">{task.title}</h2>
-      <p className="form">{task.timespan}h</p>
+      <p className="form timespan">{task.timespan}h</p>
     </div>
     <div className="right">
       {taskBtn}

@@ -7,11 +7,11 @@ function TaskList({tasks, profile, selector, workspace}) {
     <Task key={task.id} task={task} profile={profile} selector={selector} workspace={workspace} />
   ))
 
-  return<>
+  return<div className="mappedTasks">
      <ul>
         {mappedTasks}
     </ul>
-  </>
+  </div>
 }
 
 export default TaskList;
