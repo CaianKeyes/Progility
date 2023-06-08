@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createTask } from "../apiService";
+import Navbar from "./navbar";
 
 function Create(profile) {
   const [title, setTitle] = useState('');
@@ -37,6 +38,8 @@ function Create(profile) {
   }
 
   return <>
+    <Navbar />
+
     <form className="register" onSubmit={handleSubmit}>
       <h2 className="form title">Create Task</h2>
       <h3 className='form'>Title:</h3>

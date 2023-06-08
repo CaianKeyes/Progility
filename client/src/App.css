@@ -55,3 +55,27 @@
   color: white;
   margin-right: 15px;
 }
+
+.navbar {
+  display: flex;
+  background-color: white;
+  font-family: arial;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 20px;
+  margin-left: 25px;
+}
+
+.navlinks {
+  display: flex;
+  margin-right: 200px;
+}
+
+.nav_link {
+  margin-right: 20px;
+  cursor: pointer;
+}
