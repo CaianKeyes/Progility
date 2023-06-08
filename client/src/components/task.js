@@ -20,6 +20,8 @@ function Task ({task, profile, selector, workspace}) {
         <button onClick={handleComplete} className="submit">Complete</button>
         <button className="submit">Cancel</button>
       </div>)
+    } else if (selector == 'active') {
+      setTaskBtn(<p>User:</p>)
     }
   }, [selector])
 
