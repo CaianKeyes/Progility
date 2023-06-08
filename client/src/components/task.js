@@ -14,22 +14,26 @@ function Task ({task, profile, selector, workspace}) {
 
   useEffect(() => {
     if (selector == 'general') {
-      setTaskBtn(<button onClick={handleAccept}>Accept</button>)
+      setTaskBtn(<button className="submit accept" onClick={handleAccept}>Accept</button>)
     } else if (selector == 'personal') {
-      setTaskBtn(<div>
+      setTaskBtn(<div className="form">
         <button onClick={handleComplete} className="submit">Complete</button>
         <button className="submit">Cancel</button>
       </div>)
     } else if (selector == 'active') {
-      setTaskBtn(<p>User:</p>)
+      setTaskBtn(<p className="form">User:</p>)
     }
   }, [selector])
 
-  return <div>
-    <h2>{task.title}</h2>
-    <p>{task.timespan}h</p>
-    <p>{task.timestamp}</p>
-    {taskBtn}
+  return <div className="task">
+    <div className="left">
+      <h2 className="form">{task.title}</h2>
+      <p className="form">{task.timespan}h</p>
+    </div>
+    <div className="right">
+      {taskBtn}
+      <p className="form">{new Date(task.timestamp).toLocaleString()}</p>
+    </div>
   </div>
 }
 

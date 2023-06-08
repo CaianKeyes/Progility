@@ -89,3 +89,24 @@
   color: white;
   cursor: pointer;
 }
+
+.task {
+  margin: 10px 10%;
+  max-width: 600px;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.left, .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.accept {
+  align-self: flex-end;
+}

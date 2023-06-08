@@ -9,7 +9,7 @@ function TaskHeader({admin, onData}) {
   useEffect(() => {
     if (admin) {
       setActive(<h2 onClick={handleClickActive}>Active</h2>)
-      setCompleted(<h2 onClick={handleClickCompleted}>completed</h2>)
+      setCompleted(<h2 onClick={handleClickCompleted}>Completed</h2>)
     }
   }, [admin])
 
