@@ -12,6 +12,11 @@ async function getWorkspaces (ctx) {
   ctx.body = workspaces;
 }
 
+async function getTasks (ctx) {
+  const tasks = await Tasks.findAll();
+  ctx.body = tasks;
+}
+
 async function register (ctx) {
   const user = await Users.findOne({
     where: { email: ctx.request.body.email }
@@ -64,10 +69,49 @@ async function workspace (ctx) {
   ctx.body = workspace;
 }
 
+async function createTask (ctx) {
+  const task = await Tasks.create({
+    title: ctx.request.body.title,
+    timespan: ctx.request.body.timespan,
+    timestamp: new Date(),
+    description: ctx.request.body.description,
+    requirements: ctx.request.body.requirements
+  })
+
+  // gets the workplace, allowing us to get the array to add to it
+  const workspace = await Workspaces.findOne({
+    where: {
+      id: ctx.request.body.wID
+    }
+  });
+
+  if (!workspace) {
+    ctx.status = 404;
+    ctx.body = 'Workspace not found';
+    return;
+  }
+
+  if(!workspace.activeTasksId) {
+    await Workspaces.update(
+      {activeTasksId: [task.id]},
+      {where: { id: workspace.id } }
+    )
+  } else {
+    await Workspaces.update(
+      {activeTasksId: [...workspace.activeTasksId, task.id]},
+      {where: { id: workspace.id } }
+    )
+  }
+
+  ctx.body = task;
+}
+
 module.exports = {
   getUsers,
   register,
   login,
   workspace,
-  getWorkspaces
+  getWorkspaces,
+  createTask,
+  getTasks
 }
