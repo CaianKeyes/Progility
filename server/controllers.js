@@ -133,6 +133,10 @@ async function acceptTask (ctx) {
   )
 }
 
+async function completeTask () {
+  
+}
+
 module.exports = {
   getUsers,
   register,

@@ -22,6 +22,9 @@ function Tasks({profile, workspace}) {
             setGeneralTasks((res) => [...res, task]);
           } else {
             setActiveTasks((res) => [...res, task]);
+            if (task.userId == profile.id) {
+              setPersonalTasks((res) => [...res, task]);
+            }
           }
         }
       });
@@ -33,15 +36,13 @@ function Tasks({profile, workspace}) {
   }, [workspace]);
 
   useEffect(() => {
-    console.log(activeTasks);
-  }, [activeTasks])
-
-  useEffect(() => {
     if (selector == 'general'){
       setTaskList(generalTasks);
     } else if (selector == 'active') {
       setTaskList(activeTasks);
-    } 
+    } else if (selector == 'personal') {
+      setTaskList(personalTasks);
+    }
   }, [generalTasks, selector]);
 
   const hanndleDataFromChild = (childData) => {
@@ -51,7 +52,7 @@ function Tasks({profile, workspace}) {
   return <>
   <Navbar />
   <TaskHeader admin={admin} onData={hanndleDataFromChild} />
-  <TaskList tasks={taskList} profile={profile} />
+  <TaskList tasks={taskList} profile={profile} selector={selector} />
   </>
 }
 
