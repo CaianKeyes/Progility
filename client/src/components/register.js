@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createWorkspace, register } from '../apiService';
 import '../App.css';
 
@@ -7,10 +8,7 @@ function Register({ onData, profile }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isChecked, setIsChecked] = useState(false);
-
-  useEffect(() => {
-    console.log(profile);
-  }, [profile]);
+  const navigate = useNavigate();
 
   const handleCheckbox = e => {
     setIsChecked(e.target.checked);
@@ -40,6 +38,10 @@ function Register({ onData, profile }) {
     if (userProfile.id && isChecked) {
       const space = await createWorkspace(userProfile);
       console.log(space);
+    }
+
+    if (typeof userProfile) {
+      navigate('/tasks')
     }
   }
 
@@ -81,7 +83,7 @@ function Register({ onData, profile }) {
         ></input>
         <br />
 
-        <button className='form submit' type='submit'>Login</button>
+        <button className='form submit' type='submit'>Sign-Up</button>
       </form>
     </div>
     <div>

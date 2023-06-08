@@ -22,6 +22,10 @@ function Login({ onData }) {
     }
   }
 
+  const handleRegister = e => {
+    navigate('/register');
+  }
+
   return <>
     <form className='register' onSubmit={handleSubmit}>
       <h2 className='form title'>Login</h2>
@@ -40,6 +44,8 @@ function Login({ onData }) {
         onChange={e => setPassword(e.target.value)}
       ></input>
       <button className='submit' type='submit'>Login</button>
+
+      <button type='button' onClick={handleRegister} className='form submit' >Sign-Up</button>
     </form>
   </>
 }
