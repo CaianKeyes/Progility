@@ -2,6 +2,7 @@ const sequelize = require('./db');
 const Tasks = require('./models/tasks');
 const Users = require('./models/users');
 const Workspaces = require('./models/workspace');
+const { fn, col } = require('sequelize');
 
 async function getUsers (ctx) {
   const users = await Users.findAll();
@@ -127,27 +128,28 @@ async function acceptTask (ctx) {
     { userId: ctx.request.body.userId },
     { where: { id: ctx.request.body.taskId } }
   )
-
-  await Users.update(
-    { activeTasksId: sequelize.literal(`array_append(activeTasksId, ${ctx.request.body.taskId})`) },
-    { where: { id: ctx.request.body.userId } }
-  )
 }
 
 async function completeTask (ctx) {
-  await Users.update({
-    activeTasksId: sequelize.literal(`array_remove(activeTasksId, '${ctx.request.body.taskId}')`)},
-    { where: {id: ctx.request.body.userId} }
-  )
-
-  await Workspaces.update({
-    activeTasksId: sequelize.literal(`array_remove(activeTasksId, '${ctx.request.body.taskId}')`)},
-    { where: {id: ctx.request.body.workspaceId } }
-  )
+  await Users.update(
+    {
+      activeTasksId: fn('array_remove', col('activeTasksId'), ctx.request.body.taskId)
+    },
+    { where: { id: ctx.request.body.userId } }
+  );
 
   await Workspaces.update(
-    { completedTasksId: sequelize.literal(`array_append(completedTasksId, '${ctx.request.body.taskId}')`)},
-    { where: { id: ctx.request.body.workspaceId  } }
+    {
+      activeTasksId: fn('array_remove', col   ('activeTasksId'), ctx.request.body.taskId)
+    },
+    { where: {id: ctx.request.body.workspaceId } }
+  )
+  
+  await Workspaces.update(
+    {
+      completedTasksId: fn('array_append', col('completedTasksId'), ctx.request.body.taskId)
+    },
+    { where: { id: ctx.request.body.workspaceId } }
   )
 }
 

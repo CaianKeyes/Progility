@@ -52,7 +52,7 @@ function Tasks({profile, workspace}) {
   return <>
   <Navbar />
   <TaskHeader admin={admin} onData={hanndleDataFromChild} />
-  <TaskList tasks={taskList} profile={profile} selector={selector} />
+  <TaskList tasks={taskList} profile={profile} selector={selector} workspace={workspace} />
   </>
 }
 

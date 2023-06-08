@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { acceptTask } from "../apiService";
+import { acceptTask, completeTask } from "../apiService";
 
-function Task ({task, profile, selector}) {
+function Task ({task, profile, selector, workspace}) {
   const [taskBtn, setTaskBtn] = useState('');
 
   const handleAccept = () => {
@@ -9,7 +9,7 @@ function Task ({task, profile, selector}) {
   }
 
   const handleComplete = () => {
-    
+    completeTask(profile.id, task.id, workspace.id);
   }
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function Task ({task, profile, selector}) {
       setTaskBtn(<button onClick={handleAccept}>Accept</button>)
     } else if (selector == 'personal') {
       setTaskBtn(<div>
-        <button className="submit">Complete</button>
+        <button onClick={handleComplete} className="submit">Complete</button>
         <button className="submit">Cancel</button>
       </div>)
     }
