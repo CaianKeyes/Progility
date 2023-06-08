@@ -106,6 +106,14 @@ async function createTask (ctx) {
   ctx.body = task;
 }
 
+async function getWorkspace (ctx) {
+  const workspace = await Workspaces.findOne({
+    where: {id: ctx.params.id}
+  })
+  console.log(workspace);
+  ctx.body = workspace;
+}
+
 module.exports = {
   getUsers,
   register,
@@ -113,5 +121,6 @@ module.exports = {
   workspace,
   getWorkspaces,
   createTask,
-  getTasks
+  getTasks,
+  getWorkspace
 }
