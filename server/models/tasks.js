@@ -28,7 +28,7 @@ const Tasks = sequelize.define('Tasks', {
     allowNull: true
   },
   requirements: {
-    type: DataTypes.TEXT,
+    type: DataTypes.ARRAY(DataTypes.TEXT),
     allowNull: true
   }
 });
