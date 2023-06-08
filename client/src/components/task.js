@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 
 function Task ({task}) {
-
-  useEffect(() => {
-    console.log(task);
-  }, [task])
+  const handleAccept = () => {
+    
+  }
 
   return <div>
     <h2>{task.title}</h2>
     <p>{task.timespan}h</p>
     <p>{task.timestamp}</p>
-    <button>Accept</button>
+    <button onClick={handleAccept}>Accept</button>
   </div>
 }
 

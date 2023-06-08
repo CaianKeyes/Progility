@@ -78,7 +78,6 @@ async function createTask (ctx) {
     requirements: ctx.request.body.requirements
   })
 
-  // gets the workplace, allowing us to get the array to add to it
   const workspace = await Workspaces.findOne({
     where: {
       id: ctx.request.body.wID
@@ -122,6 +121,18 @@ async function getActiveTasks (ctx) {
   ctx.body = tasks;
 }
 
+async function acceptTask (ctx) {
+  await Task.update(
+    { userId: ctx.request.body.userId },
+    { where: { id: ctx.request.body.taskId } }
+  )
+
+  await Users.update(
+    { activeTasksId: ctx.request.body.taskId},
+    { where: { id: ctx.request.body.userId } }
+  )
+}
+
 module.exports = {
   getUsers,
   register,
@@ -131,5 +142,6 @@ module.exports = {
   createTask,
   getTasks,
   getWorkspace,
-  getActiveTasks
+  getActiveTasks,
+  acceptTask
 }

@@ -18,7 +18,6 @@ function Tasks({profile, workspace}) {
       getActiveTasks(workspace.activeTasksId).then(res => {
         for (const task of res) {
           if (!task.userId) {
-            console.log(generalTasks);
             if (generalTasks.length == 0) setGeneralTasks([task]);
             setGeneralTasks((res) => [...res, task]);
           } else {
