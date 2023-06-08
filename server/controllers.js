@@ -114,6 +114,14 @@ async function getWorkspace (ctx) {
   ctx.body = workspace;
 }
 
+async function getActiveTasks (ctx) {
+  const tasks = await Tasks.findAll({
+    where: { id: JSON.parse(ctx.params.ids) }
+  });
+  console.log(1, tasks);
+  ctx.body = tasks;
+}
+
 module.exports = {
   getUsers,
   register,
@@ -122,5 +130,6 @@ module.exports = {
   getWorkspaces,
   createTask,
   getTasks,
-  getWorkspace
+  getWorkspace,
+  getActiveTasks
 }

@@ -1,12 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getActiveTasks } from "../apiService";
 import Navbar from "./navbar";
 import TaskList from "./taskList";
 
-function Tasks(profile, workspace) {
+function Tasks(profile) {
+  const [activeTasks, setActiveTasks] = useState([]);
 
   useEffect(() => {
-    
-  }, [workspace])
+    if (profile.workspace.id) {
+      getActiveTasks(profile.workspace.activeTasksId).then(res => {
+        setActiveTasks(res);
+        console.log(res);
+      });
+    }
+  }, [profile.workspace])
 
   return <>
   <Navbar />
