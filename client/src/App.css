@@ -79,3 +79,13 @@
   margin-right: 20px;
   cursor: pointer;
 }
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f19406;
+  padding: 15px;
+  font-family: arial;
+  color: white;
+  cursor: pointer;
+}

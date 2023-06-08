@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
 import { getActiveTasks } from "../apiService";
 import Navbar from "./navbar";
+import TaskHeader from "./taskHeader";
 import TaskList from "./taskList";
 
-function Tasks(profile) {
+function Tasks({profile, workspace}) {
   const [activeTasks, setActiveTasks] = useState([]);
+  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    if (profile.workspace.id) {
-      getActiveTasks(profile.workspace.activeTasksId).then(res => {
+    if (workspace.id) {
+      getActiveTasks(workspace.activeTasksId).then(res => {
         setActiveTasks(res);
-        console.log(res);
       });
     }
-  }, [profile.workspace])
+
+    if (profile.id == workspace.adminId && profile.id) {
+      setAdmin(true);
+    }
+  }, [workspace])
 
   return <>
   <Navbar />
+  <TaskHeader admin={admin} />
   <TaskList tasks={activeTasks} />
   </>
 }
