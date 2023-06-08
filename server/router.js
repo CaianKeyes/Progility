@@ -9,7 +9,8 @@ const {
   getTasks,
   getWorkspace,
   getActiveTasks,
-  acceptTask
+  acceptTask,
+  completeTask
 } = require('./controllers');
 
 const router = new Router();
@@ -25,5 +26,6 @@ router.post('/tasks', ctx => createTask(ctx));
 router.get('/workspaces/:id', ctx => getWorkspace(ctx));
 router.get('/tasks/:ids', ctx => getActiveTasks(ctx));
 router.put('/tasks/accept', ctx => acceptTask(ctx));
+router.put('/tasks/complete', ctx => completeTask(ctx));
 
 module.exports = router;

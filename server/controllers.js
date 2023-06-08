@@ -1,3 +1,4 @@
+const sequelize = require('./db');
 const Tasks = require('./models/tasks');
 const Users = require('./models/users');
 const Workspaces = require('./models/workspace');
@@ -133,8 +134,21 @@ async function acceptTask (ctx) {
   )
 }
 
-async function completeTask () {
-  
+async function completeTask (ctx) {
+  await Users.update({
+    activeTasksId: sequelize.literal(`array_remove(activeTasksId, '${ctx.request.body.taskId}')`)},
+    { where: {id: ctx.request.body.userId} }
+  )
+
+  await Workspaces.update({
+    activeTasksId: sequelize.literal(`array_remove(activeTasksId, '${ctx.request.body.taskId}')`)},
+    { where: {id: ctx.request.body.workspaceId } }
+  )
+
+  await Workspaces.update(
+    { completedTasksId: sequelize.literal(`array_append(completedTasksId, '${ctx.request.body.taskId}')`)},
+    { where: { id: ctx.request.body.workspaceId  } }
+  )
 }
 
 module.exports = {
@@ -147,5 +161,6 @@ module.exports = {
   getTasks,
   getWorkspace,
   getActiveTasks,
-  acceptTask
+  acceptTask,
+  completeTask
 }
