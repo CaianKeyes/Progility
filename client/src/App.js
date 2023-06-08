@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { 
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom'
 import Login from "./components/login";
 import Register from "./components/register";
 import Create from "./components/Create";
@@ -12,15 +16,31 @@ function App() {
     setProfile(childData);
   }
 
-  return <>
-    <Login onData={handleDataFromChildren}/>
-    <Register 
-    onData={handleDataFromChildren}
-    profile={profile}
-    />
-    <Create profile={profile} />
-    <Tasks />
-  </>
+  const router = createBrowserRouter([
+    {
+      path: '/login',
+      element: <Login onData={handleDataFromChildren}/>
+    },
+    {
+      path: '/register',
+      element: <Register profile={profile} onData={handleDataFromChildren}/>
+    },
+    {
+      path: '/create',
+      element: <Create profile={profile}/>
+    },
+    {
+      path: '/Tasks',
+      element: <Tasks />
+    },
+    {
+      path: '*',
+      element: <Login onData={handleDataFromChildren}/>
+    }
+  ]);
+
+
+  return <RouterProvider router={router} />
 }
 
 export default App;

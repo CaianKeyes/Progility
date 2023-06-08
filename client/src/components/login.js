@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../apiService'
 import '../App.css';
 
 function Login({ onData }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -14,6 +16,10 @@ function Login({ onData }) {
 
     const profile = await login({ email, password });
     onData(profile);
+
+    if (profile != '') {
+      navigate('/tasks');
+    }
   }
 
   return <>
