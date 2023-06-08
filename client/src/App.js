@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Login from "./components/login";
 import Register from "./components/register";
+import Create from "./components/Create";
+import Tasks from './components/Tasks';
 import './App.css';
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
     onData={handleDataFromChildren}
     profile={profile}
     />
+    <Create />
+    <Tasks />
   </>
 }
 
