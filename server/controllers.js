@@ -122,13 +122,13 @@ async function getActiveTasks (ctx) {
 }
 
 async function acceptTask (ctx) {
-  await Task.update(
+  await Tasks.update(
     { userId: ctx.request.body.userId },
     { where: { id: ctx.request.body.taskId } }
   )
 
   await Users.update(
-    { activeTasksId: ctx.request.body.taskId},
+    { activeTasksId: sequelize.literal(`array_append(activeTasksId, ${ctx.request.body.taskId})`) },
     { where: { id: ctx.request.body.userId } }
   )
 }

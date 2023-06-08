@@ -17,8 +17,8 @@ function Tasks({profile, workspace}) {
     if (workspace.id) {
       getActiveTasks(workspace.activeTasksId).then(res => {
         for (const task of res) {
+          console.log(task);
           if (!task.userId) {
-            if (generalTasks.length == 0) setGeneralTasks([task]);
             setGeneralTasks((res) => [...res, task]);
           } else {
             setActiveTasks((res) => [...res, task]);
@@ -33,34 +33,25 @@ function Tasks({profile, workspace}) {
   }, [workspace]);
 
   useEffect(() => {
-    if (selector == 'general') setTaskList(generalTasks);
-  }, [generalTasks])
+    console.log(activeTasks);
+  }, [activeTasks])
+
+  useEffect(() => {
+    if (selector == 'general'){
+      setTaskList(generalTasks);
+    } else if (selector == 'active') {
+      setTaskList(activeTasks);
+    } 
+  }, [generalTasks, selector]);
 
   const hanndleDataFromChild = (childData) => {
     setSelector(childData);
-    switch (childData) {
-      case 'general':
-        setTaskList(generalTasks);
-        break;
-      case 'personal':
-        setTaskList(personalTasks);
-        break;
-      case 'active':
-        setTaskList(activeTasks);
-        break;
-      case 'completed':
-        setTaskList(completedTasks);
-        break;
-
-      default:
-        console.log('defaulted');
-    }
   }
 
   return <>
   <Navbar />
   <TaskHeader admin={admin} onData={hanndleDataFromChild} />
-  <TaskList tasks={taskList} />
+  <TaskList tasks={taskList} profile={profile} />
   </>
 }
 

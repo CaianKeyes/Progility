@@ -77,13 +77,11 @@ export async function getActiveTasks(arr) {
 }
 
 export async function acceptTask(userId, taskId) {
-  const res = await fetch('http://localhost:3003/tasks/accept', {
+  await fetch('http://localhost:3003/tasks/accept', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ userId, taskId })
   })
-  const json = await res.json();
-  return json;
 }

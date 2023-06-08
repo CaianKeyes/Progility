@@ -15,7 +15,6 @@ function TaskHeader({admin, onData}) {
 
   const handleClickGeneral = () => {
     onData('general');
-    console.log('general');
   }
 
   const handleClickPersonal = () => {

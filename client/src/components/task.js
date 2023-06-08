@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { acceptTask } from "../apiService";
 
-function Task ({task}) {
+function Task ({task, profile}) {
   const handleAccept = () => {
-    
+    acceptTask(profile.id, task.id);
   }
 
   return <div>

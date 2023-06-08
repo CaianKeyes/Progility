@@ -1,14 +1,10 @@
 import { useEffect } from "react";
 import Task from "./task";
 
-function TaskList({tasks}) {
-
-  useEffect(() => {
-    console.log(tasks);
-  }, [tasks])
+function TaskList({tasks, profile}) {
 
   const mappedTasks = tasks.map(task => (
-    <Task key={task.id} task={task} />
+    <Task key={task.id} task={task} profile={profile} />
   ))
 
   return<>
