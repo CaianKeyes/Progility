@@ -17,7 +17,7 @@ function Tasks(profile) {
 
   return <>
   <Navbar />
-  <TaskList />
+  <TaskList tasks={activeTasks} />
   </>
 }
 
