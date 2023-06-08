@@ -23,6 +23,19 @@
   padding-left: 10px;
 }
 
+.number {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 40px;
+  height: 25px;
+  border-radius: 20px;
+  border: none;
+  background-color: #e3e3e3;
+  font-size: 17px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
 .title {
   margin-bottom: 15px;
 }
