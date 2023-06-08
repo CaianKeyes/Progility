@@ -18,7 +18,7 @@ function App() {
     onData={handleDataFromChildren}
     profile={profile}
     />
-    <Create />
+    <Create profile={profile} />
     <Tasks />
   </>
 }

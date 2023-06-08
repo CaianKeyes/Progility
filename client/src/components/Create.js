@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { createTask } from "../apiService";
 
-function Create() {
+function Create(profile) {
   const [title, setTitle] = useState('');
   const [timeSpan, setTimespan] = useState('');
   const [description, setDescription] = useState('');
@@ -20,6 +21,19 @@ function Create() {
     if (!title || !timeSpan) {
       alert('Title and Timespan are required feilds');
     } 
+
+    if (profile.profile.workspaceId) {
+      console.log('good');
+      const task = await createTask({
+        wID: profile.profile.workspaceId,
+        title: title,
+        timespan: timeSpan,
+        description: description,
+        requirements: requirmentsList,
+      })
+
+      console.log(task);
+    }
   }
 
   return <>
