@@ -80,7 +80,7 @@ function Create({profile, users}) {
           type='text' 
           value={requirments || ''}
           onChange={e => setRequirments(e.target.value)}
-          className='form input'
+          className='form req_input'
         ></input>
         <button className="form add" onClick={handleAdd}>Add</button>
 
