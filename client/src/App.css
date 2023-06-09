@@ -93,7 +93,7 @@
 .task {
   margin: 10px 10%;
   max-width: 700px;
-  height: 100px;
+  min-height: 100px;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -116,12 +116,54 @@
   margin-bottom: 7px;
 }
 
-.timespan {
-  font-size: 20px;
-}
-
 .mappedTasks {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.time_btn {
+  display: flex;
+}
+
+.timespan {
+  font-size: 20px;
+}
+
+.down_arrow {
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid black;
+  margin-left: 15px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+
+.up_arrow {
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid black;
+  margin-left: 15px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.description {
+  font-family: arial;
+  margin-top: 15px;
+  font-size: 17.5px;
+}
+
+.requiremnets {
+  font-family: arial;
+  font-size: 17.5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

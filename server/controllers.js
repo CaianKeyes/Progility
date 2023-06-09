@@ -119,7 +119,6 @@ async function getActiveTasks (ctx) {
   const tasks = await Tasks.findAll({
     where: { id: JSON.parse(ctx.params.ids) }
   });
-  console.log(1, tasks);
   ctx.body = tasks;
 }
 
@@ -153,6 +152,34 @@ async function completeTask (ctx) {
   )
 }
 
+async function getCompletedTasks (ctx) {
+  const tasks = await Tasks.findAll({
+    where: { id: JSON.parse(ctx.params.ids) }
+  });
+  ctx.body = tasks;
+}
+
+async function addUserToWorkspace (ctx) {
+  const user = await Users.findOne({
+    where: { email: ctx.request.body.email }
+  })
+  console.log(1234, user.id);
+
+  await Users.update(
+    {
+      workspaceId: ctx.request.body.id
+    },
+    { where: { email: ctx.request.body.email } }
+  )
+
+  await Workspaces.update(
+    {
+      groupIds: fn('array_append', col('groupIds'),user.id)
+    },
+    { where: { id: ctx.request.body.id } }
+  )
+}
+
 module.exports = {
   getUsers,
   register,
@@ -164,5 +191,7 @@ module.exports = {
   getWorkspace,
   getActiveTasks,
   acceptTask,
-  completeTask
+  completeTask,
+  getCompletedTasks,
+  addUserToWorkspace
 }

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { createTask } from "../apiService";
+import AddUser from "./addUser";
 import Navbar from "./navbar";
 
-function Create(profile) {
+function Create({profile}) {
   const [title, setTitle] = useState('');
   const [timeSpan, setTimespan] = useState('');
   const [description, setDescription] = useState('');
@@ -10,6 +11,7 @@ function Create(profile) {
   const [requirmentsList, setRequirmentsList] = useState([]);
 
   const handleAdd = (e) => {
+    console.log(profile.workspaceId);
     e.preventDefault();
 
     setRequirmentsList([...requirmentsList, requirments]);
@@ -21,19 +23,23 @@ function Create(profile) {
 
     if (!title || !timeSpan) {
       alert('Title and Timespan are required feilds');
-    } 
+    } else {
+      setTitle('');
+      setDescription('');
+      setTimespan('');
+      setRequirments('')
+      setRequirmentsList([]);
+    }
 
-    if (profile.profile.workspaceId) {
+    if (profile.workspaceId) {
       console.log('good');
       const task = await createTask({
-        wID: profile.profile.workspaceId,
+        wID: profile.workspaceId,
         title: title,
         timespan: timeSpan,
         description: description,
         requirements: requirmentsList,
       })
-
-      console.log(task);
     }
   }
 
@@ -83,6 +89,8 @@ function Create(profile) {
 
         <button className='form submit' type='submit'>Create</button>
     </form>
+
+    <AddUser workspaceId={profile.workspaceId} />
   </>
 }
 

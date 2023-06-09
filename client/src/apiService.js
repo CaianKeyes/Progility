@@ -69,7 +69,6 @@ export async function getWorkspace(user) {
 }
 
 export async function getActiveTasks(arr) {
-  console.log(`http://localhost:3003/tasks/${arr}`);
   const res = await fetch(`http://localhost:3003/tasks/[${arr}]`);
 
   const json = await res.json();
@@ -94,4 +93,21 @@ export async function completeTask(userId, taskId, workspaceId) {
     },
     body: JSON.stringify({ userId, taskId, workspaceId })
   })
+}
+
+export async function getCompletedTasks(arr) {
+  const res = await fetch(`http://localhost:3003/tasks/complete/[${arr}]`);
+
+  const json = await res.json();
+  return json;
+}
+
+export async function addUserToWorkspace(id, email) {
+  await fetch('http://localhost:3003/users/add', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id, email })
+  });
 }

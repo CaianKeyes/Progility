@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getActiveTasks } from "../apiService";
+import { getActiveTasks, getCompletedTasks } from "../apiService";
 import Navbar from "./navbar";
 import TaskHeader from "./taskHeader";
 import TaskList from "./taskList";
@@ -27,6 +27,10 @@ function Tasks({profile, workspace}) {
           }
         }
       });
+      // gets completed tasks
+      getCompletedTasks(workspace.completedTasksId).then(res => {
+        setCompletedTasks(res);
+      })
     }
 
     if (profile.id == workspace.adminId && profile.id) {
@@ -35,23 +39,50 @@ function Tasks({profile, workspace}) {
   }, [workspace]);
 
   useEffect(() => {
-    if (selector == 'general'){
+    if (selector === 'general'){
       setTaskList(generalTasks);
-    } else if (selector == 'active') {
+    } else if (selector === 'active') {
       setTaskList(activeTasks);
-    } else if (selector == 'personal') {
+    } else if (selector === 'personal') {
       setTaskList(personalTasks);
+    } else if (selector === 'completed') {
+      setTaskList(completedTasks);
     }
-  }, [generalTasks, selector]);
+  }, [generalTasks, activeTasks, personalTasks, selector]);
 
   const hanndleDataFromChild = (childData) => {
     setSelector(childData);
   }
 
+  const handleListSwitch = (method, task) => {
+    switch (method) {
+      case 'accept':
+        setGeneralTasks((arr) => deleteFromList(arr, task.id));
+        setPersonalTasks((arr) => [...arr, task]);
+        break;
+      case 'complete':
+        setPersonalTasks((arr) => deleteFromList(arr, task.id));
+        setActiveTasks((arr) => deleteFromList(arr, task.id));
+        break;
+      case 'cancel':
+        break;
+    }
+  }
+
+  const deleteFromList = function (arr, id) {
+    const result = [];
+    for (const obj of arr) {
+      if (obj.id !== id) {
+        result.push(obj);
+      }
+    }
+    return result;
+  }
+
   return <>
   <Navbar />
   <TaskHeader admin={admin} onData={hanndleDataFromChild} />
-  <TaskList tasks={taskList} profile={profile} selector={selector} workspace={workspace} />
+  <TaskList tasks={taskList} profile={profile} selector={selector} workspace={workspace} onData={handleListSwitch} />
   </>
 }
 
