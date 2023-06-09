@@ -18,7 +18,6 @@ function App() {
     setProfile(childData);
     const res = await getWorkspace(childData);
     setWorkspace(res);
-    console.log(res);
   };
 
   const router = createBrowserRouter([

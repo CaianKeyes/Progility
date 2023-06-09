@@ -188,6 +188,14 @@ async function cancelTask (ctx) {
   )
 }
 
+async function getUsersInAWorkplace (ctx) {
+  const users = await Users.findAll({ 
+      where: { id: JSON.parse(ctx.params.ids) },
+      attributes: ['id', 'username']
+  });
+  ctx.body = users;
+}
+
 module.exports = {
   getUsers,
   register,
@@ -202,5 +210,6 @@ module.exports = {
   completeTask,
   getCompletedTasks,
   addUserToWorkspace,
-  cancelTask
+  cancelTask,
+  getUsersInAWorkplace
 }

@@ -121,3 +121,10 @@ export async function cancelTask(id) {
     body: JSON.stringify({ id })
   });
 }
+
+export async function getUsers(arr) {
+  const res = await fetch(`http://localhost:3003/tasks/users/[${arr}]`);
+
+  const json = await res.json();
+  return json;
+}
