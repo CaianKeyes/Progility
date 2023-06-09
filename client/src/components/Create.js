@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { createTask } from "../apiService";
+import { acceptTask, createTask } from "../apiService";
 import AddUser from "./addUser";
 import Navbar from "./navbar";
 
-function Create({profile}) {
+function Create({profile, users}) {
   const [title, setTitle] = useState('');
   const [timeSpan, setTimespan] = useState('');
   const [description, setDescription] = useState('');
   const [requirments, setRequirments] = useState('');
   const [requirmentsList, setRequirmentsList] = useState([]);
+  const [location, setLocation] = useState('');
 
   const handleAdd = (e) => {
     console.log(profile.workspaceId);
@@ -32,7 +33,6 @@ function Create({profile}) {
     }
 
     if (profile.workspaceId) {
-      console.log('good');
       const task = await createTask({
         wID: profile.workspaceId,
         title: title,
@@ -40,6 +40,9 @@ function Create({profile}) {
         description: description,
         requirements: requirmentsList,
       })
+      if (location !== 'general') {
+        acceptTask(location, task.id);
+      }
     }
   }
 
@@ -87,6 +90,15 @@ function Create({profile}) {
           ))}
         </ul>
 
+        <h3 className='form'>Location:</h3>
+        <select className="dropdown" value={location} onChange={e => setLocation(e.target.value)}>
+          <option value='general'>Genral</option>
+          {users.map(user => (
+            <option value={user.id}>{user.username}</option>
+          ))}
+        </select>
+
+        <br />
         <button className='form submit' type='submit'>Create</button>
     </form>
 
