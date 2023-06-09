@@ -9,6 +9,7 @@ import Register from "./components/register";
 import Create from "./components/Create";
 import Tasks from './components/Tasks';
 import './App.css';
+import Stats from "./components/stats/stats";
 
 function App() {
   const [profile, setProfile] = useState('');
@@ -41,6 +42,10 @@ function App() {
     {
       path: '/Tasks',
       element: <Tasks profile={profile} workspace={workspace} users={users} />
+    },
+    {
+      path: '/stats',
+      element: <Stats />
     },
     {
       path: '*',
