@@ -11,10 +11,12 @@ function TaskList({tasks, profile, selector, workspace, onData, users}) {
     <Task key={task.id} task={task} profile={profile} selector={selector} workspace={workspace} onData={onData} users={users} />
   ))
 
-  return<div className="mappedTasks">
-     <ul>
-        {mappedTasks}
-    </ul>
+  return <div className="grid">
+    <div className="mappedTasks">
+      <ul>
+          {mappedTasks}
+      </ul>
+    </div>
   </div>
 }
 
