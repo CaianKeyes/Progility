@@ -4,7 +4,7 @@ import Navbar from "./navbar";
 import TaskHeader from "./taskHeader";
 import TaskList from "./taskList";
 
-function Tasks({profile, workspace}) {
+function Tasks({profile, workspace, users}) {
   const [admin, setAdmin] = useState(false);
   const [generalTasks, setGeneralTasks] = useState([]);
   const [personalTasks, setPersonalTasks] = useState([]);
@@ -85,7 +85,7 @@ function Tasks({profile, workspace}) {
   return <>
   <Navbar />
   <TaskHeader admin={admin} onData={hanndleDataFromChild} />
-  <TaskList tasks={taskList} profile={profile} selector={selector} workspace={workspace} onData={handleListSwitch} />
+  <TaskList tasks={taskList} profile={profile} selector={selector} workspace={workspace} onData={handleListSwitch} users={users} />
   </>
 }
 

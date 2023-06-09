@@ -3,7 +3,7 @@ import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router-dom'
-import { getWorkspace } from "./apiService";
+import { getUsers, getWorkspace } from "./apiService";
 import Login from "./components/login";
 import Register from "./components/register";
 import Create from "./components/Create";
@@ -13,11 +13,14 @@ import './App.css';
 function App() {
   const [profile, setProfile] = useState('');
   const [workspace, setWorkspace] = useState('');
+  const [users, setUsers] = useState([]);
 
   const handleDataFromChildren = async (childData) => {
     setProfile(childData);
     const res = await getWorkspace(childData);
     setWorkspace(res);
+    const res2 = await getUsers(res.groupIds);
+    setUsers(res2);
   };
 
   const router = createBrowserRouter([
@@ -35,7 +38,7 @@ function App() {
     },
     {
       path: '/Tasks',
-      element: <Tasks profile={profile} workspace={workspace} />
+      element: <Tasks profile={profile} workspace={workspace} users={users} />
     },
     {
       path: '*',

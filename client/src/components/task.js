@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { acceptTask, cancelTask, completeTask } from "../apiService";
 
-function Task ({task, profile, selector, workspace, onData}) {
+function Task ({task, profile, selector, workspace, onData, users}) {
   const [taskBtn, setTaskBtn] = useState('');
   const [extraInfo, setExtraInfo] = useState('');
   const [extend, setExtend] = useState(false);
   const [arrow, setArrow] = useState('down_arrow');
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     if (extend) {
@@ -24,7 +25,21 @@ function Task ({task, profile, selector, workspace, onData}) {
       setArrow('down_arrow');
       setExtraInfo('');
     }
-  }, [extend])
+  }, [extend]);
+
+  useEffect(() => {
+    console.log('users', users);
+    if (task.userId !== null) {
+      console.log('id', task.userId);
+      for(const user of users) {
+        console.log('user', user);
+        if(user.id === task.userId) {
+          console.log('yay');
+          setUsername(user.username);
+        }
+      }
+    }
+  }, [users])
 
   const handleAccept = () => {
     acceptTask(profile.id, task.id);
@@ -59,9 +74,9 @@ function Task ({task, profile, selector, workspace, onData}) {
         <button onClick={handleCancel} className="submit personal_button">Cancel</button>
       </div>)
     } else if (selector === 'active' || selector === 'completed') {
-      setTaskBtn(<p className="form">User:</p>)
+      setTaskBtn(<p className="form">User: {username}</p>)
     }
-  }, [selector]);
+  }, [selector, username]);
 
   return <div className="task">
     <div className="left">
