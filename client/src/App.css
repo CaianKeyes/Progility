@@ -184,6 +184,7 @@
 .description {
   font-family: arial;
   margin-top: 15px;
+  margin-left: 10px;
   font-size: 17.5px;
 }
 
@@ -194,3 +195,16 @@
   margin-bottom: 15px;
 }
 
+.dropdown {
+  margin: 8px;
+  margin-left: 0px;
+  height: 30px;
+  width: 180px;
+  background-color: #f19406;
+  border: none;
+  border-radius: 20px;
+  padding: 1px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}

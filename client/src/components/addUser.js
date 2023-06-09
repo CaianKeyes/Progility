@@ -5,8 +5,6 @@ function AddUser({workspaceId}) {
   const [email, setEmail] = useState('');
 
   const handleSubmit = (e) => {
-    console.log(workspaceId);
-    console.log(email);
     e.preventDefault();
 
     setEmail('');
@@ -17,7 +15,7 @@ function AddUser({workspaceId}) {
   return <div>
     <form onSubmit={handleSubmit} className="register">
       <h1 className="title form">Add a User to the Workspace</h1>
-      <h2 className="form">email:</h2>
+      <h2 className="form">Email:</h2>
       <input 
         type='email' 
         value={email || ''}

@@ -90,11 +90,6 @@ function Register({ onData, profile }) {
         <button className='form submit' type='submit'>Sign-Up</button>
       </form>
     </div>
-    <div>
-      <h1>Profile:</h1>
-      <p>username: {profile.username}</p>
-      <p>email: {profile.email}</p>
-    </div>
   </>
 }
 
