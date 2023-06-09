@@ -49,6 +49,8 @@ function Create({profile, users}) {
   return <>
     <Navbar />
 
+    <button onClick={() => console.log('-----------')}>cl</button>
+
     <form className="register" onSubmit={handleSubmit}>
       <h2 className="form title">Create Task</h2>
       <h3 className='form'>Title:</h3>
@@ -94,7 +96,7 @@ function Create({profile, users}) {
         <select className="dropdown" value={location} onChange={e => setLocation(e.target.value)}>
           <option value='general'>Genral</option>
           {users.map(user => (
-            <option value={user.id}>{user.username}</option>
+            <option key={user.id} value={user.id}>{user.username}</option>
           ))}
         </select>
 

@@ -15,6 +15,10 @@ function Login({ onData }) {
     setPassword('');
 
     const profile = await login({ email, password });
+    if (!profile) {
+      alert('username or password was incorrect')
+      return;
+    }
     onData(profile);
 
     if (profile != '') {

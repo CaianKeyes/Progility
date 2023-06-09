@@ -17,10 +17,12 @@ function App() {
 
   const handleDataFromChildren = async (childData) => {
     setProfile(childData);
-    const res = await getWorkspace(childData);
-    setWorkspace(res);
-    const res2 = await getUsers(res.groupIds);
-    setUsers(res2);
+    if (childData.workspaceId) {
+      const res = await getWorkspace(childData);
+      setWorkspace(res);
+      const res2 = await getUsers(res.groupIds);
+      setUsers(res2);
+    }
   };
 
   const router = createBrowserRouter([

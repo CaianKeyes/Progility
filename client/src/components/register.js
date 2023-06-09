@@ -33,6 +33,10 @@ function Register({ onData, profile }) {
     setPassword('');
 
     const userProfile = await register({ username, email, password });
+    if (!userProfile) {
+      alert('an acount with this email already esists');
+      return;
+    }
     onData(userProfile);
 
     if (userProfile.id && isChecked) {

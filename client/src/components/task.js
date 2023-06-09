@@ -28,13 +28,9 @@ function Task ({task, profile, selector, workspace, onData, users}) {
   }, [extend]);
 
   useEffect(() => {
-    console.log('users', users);
     if (task.userId !== null) {
-      console.log('id', task.userId);
       for(const user of users) {
-        console.log('user', user);
         if(user.id === task.userId) {
-          console.log('yay');
           setUsername(user.username);
         }
       }

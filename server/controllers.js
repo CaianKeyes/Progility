@@ -26,7 +26,6 @@ async function register (ctx) {
 
   if (user) {
     ctx.body = 'Email already exsists';
-    console.log('Email already exsists');
   } else {
     const newUser = await Users.create({
       username: ctx.request.body.username,

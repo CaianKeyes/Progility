@@ -16,16 +16,33 @@ function Tasks({profile, workspace, users}) {
   useEffect(() => {
     if (workspace.id) {
       getActiveTasks(workspace.activeTasksId).then(res => {
-        for (const task of res) {
-          if (!task.userId) {
-            setGeneralTasks((res) => [...res, task]);
-          } else {
-            setActiveTasks((res) => [...res, task]);
-            if (task.userId == profile.id) {
-              setPersonalTasks((res) => [...res, task]);
+        setGeneralTasks(() => {
+          const result = [];
+          for (const task of res) {
+            if (!task.userId) {
+              result.push(task);
             }
           }
-        }
+          return result;
+        })
+        setActiveTasks(() => {
+          const result = [];
+          for (const task of res) {
+            if(task.userId) {
+              result.push(task);
+            }
+          }
+          return result;
+        })
+        setPersonalTasks(() => {
+          const result = [];
+          for (const task of res) {
+            if(task.userId === profile.id) {
+              result.push(task);
+            }
+          }
+          return result;
+        })
       });
       // gets completed tasks
       getCompletedTasks(workspace.completedTasksId).then(res => {

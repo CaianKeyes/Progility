@@ -10,8 +10,12 @@ export async function register(user) {
       password: user.password,
     })
   })
-  const json = await res.json();
-  return json;
+  try {
+    const json = await res.json();
+    return json;
+  } catch(err) {
+    return false;
+  }
 }
 
 export async function login(user) {
@@ -21,12 +25,16 @@ export async function login(user) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email: 'user1@gmail.com',
-      password: 'user1_123',
+      email: user.email,
+      password: user.password,
     })
   })
-  const json = await res.json();
-  return json;
+  try {
+    const json = await res.json();
+    return json;
+  } catch (err) {
+    return false;
+  }
 }
 
 export async function createWorkspace(user) {
