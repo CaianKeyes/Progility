@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { acceptTask, completeTask } from "../apiService";
+import { acceptTask, cancelTask, completeTask } from "../apiService";
 
 function Task ({task, profile, selector, workspace, onData}) {
   const [taskBtn, setTaskBtn] = useState('');
@@ -36,6 +36,11 @@ function Task ({task, profile, selector, workspace, onData}) {
     onData('complete', task);
   }
 
+  const handleCancel = () => {
+    cancelTask(task.id);
+    onData('cancel', task);
+  }
+
   const handleArrow = () => {
     if (extend) {
       setExtend(false);
@@ -51,7 +56,7 @@ function Task ({task, profile, selector, workspace, onData}) {
       setTaskBtn(<div className="accept">
         <button onClick={handleComplete} className="submit personal_button">Complete</button>
         <br />
-        <button className="submit personal_button">Cancel</button>
+        <button onClick={handleCancel} className="submit personal_button">Cancel</button>
       </div>)
     } else if (selector === 'active' || selector === 'completed') {
       setTaskBtn(<p className="form">User:</p>)

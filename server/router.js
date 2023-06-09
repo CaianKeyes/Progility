@@ -12,7 +12,8 @@ const {
   acceptTask,
   completeTask,
   getCompletedTasks,
-  addUserToWorkspace
+  addUserToWorkspace,
+  cancelTask
 } = require('./controllers');
 
 const router = new Router();
@@ -31,4 +32,5 @@ router.put('/tasks/accept', ctx => acceptTask(ctx));
 router.put('/tasks/complete', ctx => completeTask(ctx));
 router.get('/tasks/complete/:ids', ctx => getCompletedTasks(ctx));
 router.put('/users/add', ctx => addUserToWorkspace(ctx));
+router.put('/tasks/cancel', ctx => cancelTask(ctx));
 module.exports = router;

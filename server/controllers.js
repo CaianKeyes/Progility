@@ -181,6 +181,13 @@ async function addUserToWorkspace (ctx) {
   }
 }
 
+async function cancelTask (ctx) {
+ await Tasks.update(
+    { userId: null },
+    { where: { id: ctx.request.body.id } }
+  )
+}
+
 module.exports = {
   getUsers,
   register,
@@ -194,5 +201,6 @@ module.exports = {
   acceptTask,
   completeTask,
   getCompletedTasks,
-  addUserToWorkspace
+  addUserToWorkspace,
+  cancelTask
 }

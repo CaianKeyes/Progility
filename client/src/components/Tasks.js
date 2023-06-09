@@ -63,8 +63,11 @@ function Tasks({profile, workspace}) {
       case 'complete':
         setPersonalTasks((arr) => deleteFromList(arr, task.id));
         setActiveTasks((arr) => deleteFromList(arr, task.id));
+        setCompletedTasks((arr) => [...arr, task]);
         break;
       case 'cancel':
+        setPersonalTasks((arr) => deleteFromList(arr, task.id));
+        setGeneralTasks((arr) => [...arr, task])
         break;
     }
   }
