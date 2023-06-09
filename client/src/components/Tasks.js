@@ -33,7 +33,7 @@ function Tasks({profile, workspace}) {
       })
     }
 
-    if (profile.id == workspace.adminId && profile.id) {
+    if (profile.id === workspace.adminId && profile.id) {
       setAdmin(true);
     }
   }, [workspace]);
