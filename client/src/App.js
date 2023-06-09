@@ -45,7 +45,7 @@ function App() {
     },
     {
       path: '/stats',
-      element: <Stats />
+      element: <Stats users={users} />
     },
     {
       path: '*',
