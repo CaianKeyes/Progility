@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function BarChart({ data }) {
+function BarChart({data, users}) {
   const [multiplyer, setMultiplyer] = useState(1);
 
   useEffect(() => {
@@ -24,15 +24,17 @@ function BarChart({ data }) {
       <h2 className="form label">{findHighest(data)}</h2>
       <div className="chart">
         {data.map((value, index) => (
+          <div key={index}>
           <div
-            key={index}
             className="bar"
             style={{ height: `${value * multiplyer}px` }}
           ></div>
+          <p >{users[index].username}</p>
+          </div>
         ))}
+        <div className="line"></div>
       </div>
     </div>
-    
   );
 }
 

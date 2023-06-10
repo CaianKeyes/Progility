@@ -214,15 +214,15 @@
 }
 
 .chart {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  height: 300px;
+  height: 330px;
   padding: 20px;
   padding-top: 5px;
   padding-bottom: 0px;
-  border-bottom: 2px solid black;
   border-radius: 20px;
   margin: 20px;
   background-color: #f1f1f1;
@@ -237,4 +237,12 @@
   width: 30px;
   background-color: #007bff;
   margin-right: 5px;
+}
+
+.line {
+  position: absolute;
+  background-color: black;
+  width: 94%;
+  height: 1px;
+  bottom: 18px;
 }

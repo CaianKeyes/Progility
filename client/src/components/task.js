@@ -43,7 +43,7 @@ function Task ({task, profile, selector, workspace, onData, users}) {
   };
 
   const handleComplete = () => {
-    completeTask(profile.id, task.id, workspace.id);
+    completeTask(profile.id, task.id, workspace.id, task.timespan);
     onData('complete', task);
   }
 

@@ -1,4 +1,3 @@
-const sequelize = require('./db');
 const Tasks = require('./models/tasks');
 const Users = require('./models/users');
 const Workspaces = require('./models/workspace');
@@ -136,6 +135,16 @@ async function completeTask (ctx) {
     { where: { id: ctx.request.body.userId } }
   );
 
+  await Users.increment('tasksCompleted', {
+    by: 1,
+    where: { id: ctx.request.body.userId }
+  })
+
+  await Users.increment('hoursCompleted', {
+    by: ctx.request.body.timespan,
+    where: { id: ctx.request.body.userId }
+  })
+
   await Workspaces.update(
     {
       activeTasksId: fn('array_remove', col   ('activeTasksId'), ctx.request.body.taskId)
@@ -190,7 +199,7 @@ async function cancelTask (ctx) {
 async function getUsersInAWorkplace (ctx) {
   const users = await Users.findAll({ 
       where: { id: JSON.parse(ctx.params.ids) },
-      attributes: ['id', 'username']
+      attributes: ['id', 'username', 'tasksCompleted', 'hoursCompleted']
   });
   ctx.body = users;
 }

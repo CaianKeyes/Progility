@@ -45,7 +45,7 @@ function App() {
     },
     {
       path: '/stats',
-      element: <Stats users={users} />
+      element: <Stats users={users} workspace={workspace} />
     },
     {
       path: '*',
