@@ -4,9 +4,10 @@ import Navbar from "../navbar";
 import BarChart from "./barChart";
 import StatsHeader from "./statsHeader";
 import { formatData, filterByDates } from '../../statsFunction'
+import UserStats from "./userStats";
 
 function Stats ({users, workspace}) {
-  const [selector, setSelector] = useState(1);
+  const [selector, setSelector] = useState('1a');
   const [completedTasks, setCompletedTasks] = useState([]);
   const [chart, setChart] = useState([]);
 
@@ -20,7 +21,7 @@ function Stats ({users, workspace}) {
 
   useEffect(() => {
     switch (selector) {
-      case('1'):
+      case('1a'):
         const resultTask = [];
         const resultHour = [];
         for(const user of users) {
@@ -33,23 +34,26 @@ function Stats ({users, workspace}) {
         </>)
         break;
 
-      case('2'):
-      console.log(2);
+      case('2a'):
         const res = formatData(filterByDates(completedTasks, 30),users);
         setChart(<>
           <BarChart data={res[0]} users={users} />
           <BarChart data={res[1]} users={users} />
         </>)
         break;
-      case('3'):
-      console.log(3);
+
+      case('3a'):
         const res2 = formatData(filterByDates(completedTasks, 7),users);
         setChart(<>
           <BarChart data={res2[0]} users={users} />
           <BarChart data={res2[1]} users={users} />
         </>)
         break;
-      case('4'):
+
+      case('4a'):
+      setChart(<>
+        <UserStats users={users} />
+      </>)
         break;
       default:
         console.log('selector does not exsist');
