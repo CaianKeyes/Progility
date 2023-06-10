@@ -2,6 +2,7 @@ const Tasks = require('./models/tasks');
 const Users = require('./models/users');
 const Workspaces = require('./models/workspace');
 const { fn, col } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 async function getUsers (ctx) {
   const users = await Users.findAll();
@@ -26,10 +27,12 @@ async function register (ctx) {
   if (user) {
     ctx.body = 'Email already exsists';
   } else {
+    const saltRounds = 10;
+    const hash = await bcrypt.hash(ctx.request.body.password, saltRounds);
     const newUser = await Users.create({
       username: ctx.request.body.username,
       email: ctx.request.body.email,
-      password: ctx.request.body.password,
+      password: hash,
       tasksCompleted: 0,
       hoursCompleted: 0,
     });
@@ -46,7 +49,7 @@ async function login (ctx) {
   if (!user) {
     ctx.status = 404;
     ctx.body = 'email incorrect';
-  } else if (user.password !== ctx.request.body.password) {
+  } else if (!bcrypt.compare(ctx.request.body.password, user.password)) {
     ctx.status = 404;
     ctx.body = 'password incorrect';
   } else {

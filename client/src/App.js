@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { 
   createBrowserRouter,
   RouterProvider
@@ -24,7 +24,8 @@ function App() {
       const res2 = await getUsers(res.groupIds);
       setUsers(res2);
     }
-  };
+  }
+
 
   const router = createBrowserRouter([
     {
