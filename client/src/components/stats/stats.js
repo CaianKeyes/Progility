@@ -5,7 +5,7 @@ import BarChart from "./barChart";
 import StatsHeader from "./statsHeader";
 
 function Stats ({users, workspace}) {
-  const [selector, setSelector] = useState(1);
+  const [selector, setSelector] = useState(2);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [taskData, setTaskData] = useState([]);
   const [hourData, setHourData] = useState([]);
@@ -13,7 +13,6 @@ function Stats ({users, workspace}) {
   useEffect(() => {
     if(workspace.id) {
       getCompletedTasks(workspace.completedTasksId).then(res => {
-        console.log(res);
         setCompletedTasks(res);
       })
     }
@@ -22,9 +21,12 @@ function Stats ({users, workspace}) {
   useEffect(() => {
     switch (selector) {
       case(1):
-      assignData(users);
+        assignData(users);
         break;
       case(2):
+        const res = formatData(filterLastWeek(completedTasks),users);
+        setTaskData(res[0]);
+        setHourData(res[1]);
         break;
       case(3):
         break;
@@ -50,6 +52,48 @@ function Stats ({users, workspace}) {
     })
   }
 
+  const formatData = (tasks, users) => {
+    const taskCount = countTasks(tasks);
+    const hourCount = countHours(tasks);
+    const tasksArr = [];
+    const hoursArr = [];
+
+    for(const user of users) {
+      if(!taskCount[user.id]) {
+        tasksArr.push(0);
+        hoursArr.push(0);
+      } else {
+        tasksArr.push(taskCount[user.id]);
+        hoursArr.push(hourCount[user.id])
+      }
+    }
+    return [tasksArr, hoursArr];
+  }
+
+  const countTasks = (tasks) => {
+    const result = {};
+    for(const task of tasks) {
+      if(result.hasOwnProperty(task.userId)) {
+        result[task.userId] += 1;
+      } else {
+        result[task.userId] =1;
+      }
+    }
+    return result;
+  }
+
+  const countHours = (tasks) => {
+    const result = {};
+    for(const task of tasks) {
+      if(result.hasOwnProperty(task.userId)) {
+        result[task.userId] += task.timespan;
+      } else {
+        result[task.userId] =task.timespan;
+      }
+    }
+    return result;
+  }
+
   const filterLastWeek = (arr) => {
     const result = [];
     for(const obj of arr) {
@@ -57,18 +101,15 @@ function Stats ({users, workspace}) {
         result.push(obj);
       }
     }
+    return result;
   }
 
   const dateChecker = (date, numDays) => {
+    const dateMili = new Date(date).getTime();
     const currentDate = new Date();
     const daysAgo = new Date().setDate(currentDate.getDate() - numDays);
 
-    console.log(date);
-    console.log(currentDate);
-    console.log(daysAgo);
-    console.log(date >= daysAgo);
-
-    return date >= daysAgo;
+    return dateMili >= daysAgo;
   }
 
   const handleDataFromChild = (childData) => {
