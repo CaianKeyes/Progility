@@ -39,8 +39,10 @@ function Stats ({users, workspace}) {
         break;
       case('4'):
         break;
+      default:
+        console.log('selector does not exsist');
     }
-  }, [users, selector])
+  }, [users, selector, completedTasks])
 
   const assignData = (userList) => {
     setTaskData(() => {

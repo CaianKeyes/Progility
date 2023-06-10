@@ -25,7 +25,7 @@ function Task ({task, profile, selector, workspace, onData, users}) {
       setArrow('down_arrow');
       setExtraInfo('');
     }
-  }, [extend]);
+  }, [extend, task]);
 
   useEffect(() => {
     if (task.userId !== null) {
@@ -35,7 +35,7 @@ function Task ({task, profile, selector, workspace, onData, users}) {
         }
       }
     }
-  }, [users])
+  }, [users, task])
 
   const handleAccept = () => {
     acceptTask(profile.id, task.id);
@@ -72,6 +72,7 @@ function Task ({task, profile, selector, workspace, onData, users}) {
     } else if (selector === 'active' || selector === 'completed') {
       setTaskBtn(<p className="form">User: {username}</p>)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selector, username]);
 
   return <div className="task">

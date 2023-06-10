@@ -21,7 +21,7 @@ function Login({ onData }) {
     }
     onData(profile);
 
-    if (profile != '') {
+    if (profile !== '') {
       navigate('/tasks');
     }
   }

@@ -53,7 +53,7 @@ function Tasks({profile, workspace, users}) {
     if (profile.id === workspace.adminId && profile.id) {
       setAdmin(true);
     }
-  }, [workspace]);
+  }, [workspace, profile]);
 
   useEffect(() => {
     if (selector === 'general'){
@@ -65,7 +65,7 @@ function Tasks({profile, workspace, users}) {
     } else if (selector === 'completed') {
       setTaskList(completedTasks);
     }
-  }, [generalTasks, activeTasks, personalTasks, selector]);
+  }, [generalTasks, activeTasks, personalTasks, selector, completedTasks]);
 
   const hanndleDataFromChild = (childData) => {
     setSelector(childData);
@@ -86,6 +86,8 @@ function Tasks({profile, workspace, users}) {
         setPersonalTasks((arr) => deleteFromList(arr, task.id));
         setGeneralTasks((arr) => [...arr, task])
         break;
+      default:
+        console.log('method does not exsist');
     }
   }
 
