@@ -9,10 +9,9 @@ function Create({profile, users}) {
   const [description, setDescription] = useState('');
   const [requirments, setRequirments] = useState('');
   const [requirmentsList, setRequirmentsList] = useState([]);
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState('general');
 
   const handleAdd = (e) => {
-    console.log(profile.workspaceId);
     e.preventDefault();
 
     setRequirmentsList([...requirmentsList, requirments]);
@@ -24,6 +23,7 @@ function Create({profile, users}) {
 
     if (!title || !timeSpan) {
       alert('Title and Timespan are required feilds');
+      return;
     } else {
       setTitle('');
       setDescription('');
@@ -33,6 +33,7 @@ function Create({profile, users}) {
     }
 
     if (profile.workspaceId) {
+      console.log(location);
       const task = await createTask({
         wID: profile.workspaceId,
         title: title,
