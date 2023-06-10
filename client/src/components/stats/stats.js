@@ -8,8 +8,7 @@ import { formatData, filterByDates } from '../../statsFunction'
 function Stats ({users, workspace}) {
   const [selector, setSelector] = useState(1);
   const [completedTasks, setCompletedTasks] = useState([]);
-  const [taskData, setTaskData] = useState([]);
-  const [hourData, setHourData] = useState([]);
+  const [chart, setChart] = useState([]);
 
   useEffect(() => {
     if(workspace.id) {
@@ -20,22 +19,35 @@ function Stats ({users, workspace}) {
   }, [workspace])
 
   useEffect(() => {
-    console.log('selc', selector);
     switch (selector) {
       case('1'):
-        assignData(users);
+        const resultTask = [];
+        const resultHour = [];
+        for(const user of users) {
+          resultTask.push(user.tasksCompleted);
+          resultHour.push(user.hoursCompleted);
+        }
+        setChart(<>
+          <BarChart data={resultTask} users={users} />
+          <BarChart data={resultHour} users={users} />
+        </>)
         break;
+
       case('2'):
       console.log(2);
         const res = formatData(filterByDates(completedTasks, 30),users);
-        setTaskData(res[0]);
-        setHourData(res[1]);
+        setChart(<>
+          <BarChart data={res[0]} users={users} />
+          <BarChart data={res[1]} users={users} />
+        </>)
         break;
       case('3'):
       console.log(3);
         const res2 = formatData(filterByDates(completedTasks, 7),users);
-        setTaskData(res2[0]);
-        setHourData(res2[1]);
+        setChart(<>
+          <BarChart data={res2[0]} users={users} />
+          <BarChart data={res2[1]} users={users} />
+        </>)
         break;
       case('4'):
         break;
@@ -44,23 +56,6 @@ function Stats ({users, workspace}) {
     }
   }, [users, selector, completedTasks])
 
-  const assignData = (userList) => {
-    setTaskData(() => {
-      const result = [];
-      for(const user of userList) {
-        result.push(user.tasksCompleted);
-      }
-      return result;
-    })
-    setHourData(() => {
-      const result = [];
-      for(const user of userList) {
-        result.push(user.hoursCompleted);
-      }
-      return result;
-    })
-  }
-
   const handleDataFromChild = (childData) => {
     setSelector(childData);
   }
@@ -68,8 +63,7 @@ function Stats ({users, workspace}) {
   return <>
     <Navbar />
     <StatsHeader users={users} onData={handleDataFromChild} />
-    <BarChart data={taskData} users={users} />
-    <BarChart data={hourData} users={users} />
+    {chart}
   </>
 }
 
