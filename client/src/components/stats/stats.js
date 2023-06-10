@@ -52,7 +52,7 @@ function Stats ({users, workspace}) {
 
       case('4a'):
       setChart(<>
-        <UserStats users={users} />
+        <UserStats users={users}/>
       </>)
         break;
       default:
