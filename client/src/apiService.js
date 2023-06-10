@@ -25,8 +25,8 @@ export async function login(user) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email: 'user1@gmail.com',
-      password: 'user1_123',
+      email: user.email,
+      password: user.password,
     })
   })
   try {
