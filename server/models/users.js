@@ -37,6 +37,16 @@ const Users = sequelize.define('Users', {
   },
 });
 
+// sync database function
+async function syncDatabase() {
+  try {
+    await Users.sync({ force: true });
+    console.log('Users synchronized successfully.');
+  } catch (error) {
+    console.error('Error synchronizing database:', error);
+  }
+}
+
 
 
 module.exports = Users;

@@ -33,4 +33,14 @@ const Tasks = sequelize.define('Tasks', {
   }
 });
 
+// sync database function
+async function syncDatabase() {
+  try {
+    await Tasks.sync({ force: true });
+    console.log('Tasks synchronized successfully.');
+  } catch (error) {
+    console.error('Error synchronizing database:', error);
+  }
+}
+
 module.exports = Tasks;

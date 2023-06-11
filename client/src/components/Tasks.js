@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getActiveTasks, getCompletedTasks } from "../apiService";
+import { getActiveTasks } from "../apiServices/getActiveTasks";
+import { getCompletedTasks } from "../apiServices/getCompleteTask";
 import Navbar from "./navbar";
 import TaskHeader from "./taskHeader";
 import TaskList from "./taskList";

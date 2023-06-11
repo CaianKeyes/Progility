@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addUserToWorkspace } from "../apiService";
+import { addUserToWorkspace } from "../apiServices/addUserToWorkspace";
 
 function AddUser({workspaceId}) {
   const [email, setEmail] = useState('');

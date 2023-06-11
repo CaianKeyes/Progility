@@ -25,5 +25,15 @@ const Workspaces = sequelize.define('Workspaces', {
   },
 });
 
+// sync database function
+async function syncDatabase() {
+  try {
+    await Workspaces.sync({ force: true });
+    console.log('Workspaces synchronized successfully.');
+  } catch (error) {
+    console.error('Error synchronizing database:', error);
+  }
+}
+
 
 module.exports = Workspaces;

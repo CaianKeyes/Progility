@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { acceptTask, cancelTask, completeTask } from "../apiService";
+import { acceptTask } from "../apiServices/acceptTasks";
+import { cancelTask } from "../apiServices/cancelTask";
+import { completeTask } from "../apiServices/completeTask";
 
 function Task ({task, profile, selector, workspace, onData, users}) {
   const [taskBtn, setTaskBtn] = useState('');

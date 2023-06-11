@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { getCompletedTasks } from "../../apiService";
+import { getCompletedTasks } from "../../apiServices/getCompleteTask";
 import Navbar from "../navbar";
 import BarChart from "./barChart";
 import StatsHeader from "./statsHeader";
 import { formatData, filterByDates } from '../../statsFunction'
 import UserStats from "./userStats";
 
-function Stats ({users, workspace}) {
+function Stats ({users, workspace, admin}) {
   const [selector, setSelector] = useState('1a');
   const [completedTasks, setCompletedTasks] = useState([]);
   const [chart, setChart] = useState([]);
@@ -64,10 +64,21 @@ function Stats ({users, workspace}) {
     setSelector(childData);
   }
 
+  const renderHTML = () => {
+    if (admin) {
+      return <div>
+        <StatsHeader users={users} onData={handleDataFromChild} />
+        {chart}
+      </div>
+    } else {
+      return <h2 className="error_msg">Only the admin can acess stats</h2>
+    }
+  }
+
   return <>
     <Navbar />
-    <StatsHeader users={users} onData={handleDataFromChild} />
-    {chart}
+    
+    {renderHTML()}
   </>
 }
 

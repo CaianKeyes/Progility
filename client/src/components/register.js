@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createWorkspace, register } from '../apiService';
+import { register } from '../apiServices/register';
+import { createWorkspace } from '../apiServices/createWorkspace';
 import '../App.css';
 
 function Register({ onData, profile }) {

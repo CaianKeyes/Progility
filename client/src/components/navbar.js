@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Navbar ({admin}) {
-  const [adminNav1, setAdminNav1] = useState('');
-  const [adminNav2, setAdminNav2] = useState('');
+function Navbar () {
   const navigate = useNavigate();
 
   const handleTasks = () => {

@@ -1,15 +1,17 @@
-import { useState } from "react";
-import { acceptTask, createTask } from "../apiService";
+import {useState } from "react";
+import { acceptTask } from "../apiServices/acceptTasks";
+import { createTask } from "../apiServices/createTask";
 import AddUser from "./addUser";
 import Navbar from "./navbar";
 
-function Create({profile, users}) {
+function Create({profile, users, admin}) {
   const [title, setTitle] = useState('');
   const [timeSpan, setTimespan] = useState('');
   const [description, setDescription] = useState('');
   const [requirments, setRequirments] = useState('');
   const [requirmentsList, setRequirmentsList] = useState([]);
   const [location, setLocation] = useState('general');
+
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -47,10 +49,10 @@ function Create({profile, users}) {
     }
   }
 
-  return <>
-    <Navbar />
-
-    <form className="register" onSubmit={handleSubmit}>
+  const renderHTML = () => {
+    if(admin) {
+      return <div>
+        <form className="register" onSubmit={handleSubmit}>
       <h2 className="form title">Create Task</h2>
       <h3 className='form'>Title:</h3>
         <input 
@@ -104,6 +106,17 @@ function Create({profile, users}) {
     </form>
 
     <AddUser workspaceId={profile.workspaceId} />
+      </div>
+
+    } else {
+      return <h2 className="error_msg">Only the admin has acess to create task</h2>
+    }
+  }
+
+  return <>
+    <Navbar />
+
+    {renderHTML()}
   </>
 }
 

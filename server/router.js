@@ -1,21 +1,17 @@
 const Router = require('koa-router');
-const { 
-  getUsers,
-  register,
-  login,
-  workspace,
-  getWorkspaces,
-  createTask,
-  getTasks,
-  getWorkspace,
-  getActiveTasks,
-  acceptTask,
-  completeTask,
-  getCompletedTasks,
-  addUserToWorkspace,
-  cancelTask,
-  getUsersInAWorkplace
-} = require('./controllers');
+const {getUsers, getWorkspaces, getTasks} = require('./controllers/tests');
+const register = require('./controllers/register');
+const login = require('./controllers/login');
+const workspace = require('./controllers/workspace');
+const createTask = require('./controllers/createTask');
+const getWorkspace = require('./controllers/getWorkspace');
+const getActiveTasks = require('./controllers/getActiveTasks');
+const acceptTask = require('./controllers/acceptTask');
+const completeTask = require('./controllers/completeTask');
+const getCompletedTasks = require('./controllers/getCompletedTasks');
+const addUserToWorkspace = require('./controllers/addUserToWorkspace');
+const cancelTask = require('./controllers/cancelTask');
+const getUsersInAWorkplace = require('./controllers/getUsersInWorkspace');
 
 const router = new Router();
 
