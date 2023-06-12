@@ -93,8 +93,8 @@ function Create({profile, users, admin}) {
           ))}
         </ul>
 
-        <h3 className='form'>Location:</h3>
-        <select className="dropdown" value={location} onChange={e => setLocation(e.target.value)}>
+        <h3 className='form location'>Location:</h3>
+        <select className="dropdown location_dropdown" value={location} onChange={e => setLocation(e.target.value)}>
           <option value='general'>General</option>
           {users.map(user => (
             <option key={user.id} value={user.id}>{user.username}</option>

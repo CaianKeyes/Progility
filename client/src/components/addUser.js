@@ -14,8 +14,8 @@ function AddUser({workspaceId}) {
 
   return <div>
     <form onSubmit={handleSubmit} className="register">
-      <h1 className="title form">Add a User to the Workspace</h1>
-      <h2 className="form">Email:</h2>
+      <h2 className="title form">Add a User to the Workspace</h2>
+      <h3 className="form">Email:</h3>
       <input 
         type='email' 
         value={email || ''}
