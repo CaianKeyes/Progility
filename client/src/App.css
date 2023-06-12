@@ -278,3 +278,21 @@
   height: 1px;
   background-color: black;
 }
+
+.stats_header {
+  height: 60px;
+  background-color: #f19406;
+  display: flex;
+  align-items: center;
+}
+
+.stats_header .form {
+  margin-left: 20px;
+  color: white;
+}
+
+.stats_header .dropdown {
+  background-color: white;
+  color: black;
+  margin-left: 10px;
+}
