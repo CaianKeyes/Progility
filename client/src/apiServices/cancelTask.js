@@ -6,4 +6,7 @@ export async function cancelTask(id) {
     },
     body: JSON.stringify({ id })
   });
+
+  console.log('data updated sucessfully');
+  return 'data updated sucessfully';
 }

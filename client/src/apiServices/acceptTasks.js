@@ -6,4 +6,7 @@ export async function acceptTask(userId, taskId) {
     },
     body: JSON.stringify({ userId, taskId })
   })
+
+  console.log('data updated sucessfully');
+  return 'data updated sucessfully';
 }

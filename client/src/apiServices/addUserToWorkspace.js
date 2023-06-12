@@ -6,4 +6,7 @@ export async function addUserToWorkspace(id, email) {
     },
     body: JSON.stringify({ id, email })
   });
+
+  console.log('data updated sucessfully');
+  return 'data updated sucessfully';
 }

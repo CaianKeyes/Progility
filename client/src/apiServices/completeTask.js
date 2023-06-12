@@ -6,4 +6,7 @@ export async function completeTask(userId, taskId, workspaceId, timespan) {
     },
     body: JSON.stringify({ userId, taskId, workspaceId, timespan })
   })
+
+  console.log('data updated sucessfully');
+  return 'data updated sucessfully';
 }
