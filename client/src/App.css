@@ -213,6 +213,12 @@
   display: flex;
 }
 
+.completed {
+  font-family: arial;
+  margin-top: 15px;
+  margin-left: 25px;
+}
+
 .chart {
   position: relative;
   flex: 1;
@@ -223,9 +229,26 @@
   padding: 20px;
   padding-top: 5px;
   padding-bottom: 0px;
-  border-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
   margin: 20px;
-  background-color: #f1f1f1;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-color: white;
+}
+
+.y_axsis {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 320px;
+  width: 60px;
+  margin-left: 10px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  padding-left: 5px;
+  padding-bottom: 15px;
 }
 
 .label {

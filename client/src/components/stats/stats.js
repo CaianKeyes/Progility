@@ -29,7 +29,9 @@ function Stats ({users, workspace, admin}) {
           resultHour.push(user.hoursCompleted);
         }
         setChart(<>
+          <h2 className="completed">Tasks Completed:</h2>
           <BarChart data={resultTask} users={users} />
+          <h2 className="completed">Hours Completed:</h2>
           <BarChart data={resultHour} users={users} />
         </>)
         break;
@@ -37,7 +39,9 @@ function Stats ({users, workspace, admin}) {
       case('2a'):
         const res = formatData(filterByDates(completedTasks, 30),users);
         setChart(<>
+          <h2 className="completed">Tasks Completed:</h2>
           <BarChart data={res[0]} users={users} />
+          <h2 className="completed">Hours Completed:</h2>
           <BarChart data={res[1]} users={users} />
         </>)
         break;
@@ -45,7 +49,9 @@ function Stats ({users, workspace, admin}) {
       case('3a'):
         const res2 = formatData(filterByDates(completedTasks, 7),users);
         setChart(<>
+          <h2 className="completed">Tasks Completed:</h2>
           <BarChart data={res2[0]} users={users} />
+          <h2 className="completed">Hours Completed:</h2>
           <BarChart data={res2[1]} users={users} />
         </>)
         break;

@@ -21,7 +21,11 @@ function BarChart({data, users}) {
 
   return (
     <div className="graph">
+      <div className="y_axsis">
       <h2 className="form label">{findHighest(data)}</h2>
+      <h2 className="form label">{findHighest(data) / 2}</h2>
+      <h2 className="form label">0</h2>
+      </div>
       <div className="chart">
         {data.map((value, index) => (
           <div key={index}>
@@ -29,7 +33,7 @@ function BarChart({data, users}) {
             className="bar"
             style={{ height: `${value * multiplyer}px` }}
           ></div>
-          <p >{users[index].username}</p>
+          <p className="form">{users[index].username}</p>
           </div>
         ))}
         <div className="line"></div>
