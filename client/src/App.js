@@ -17,6 +17,7 @@ function App() {
   const [workspace, setWorkspace] = useState('');
   const [users, setUsers] = useState([]);
   const [admin, setAdmin] = useState(false);
+  const [task, setTask] = useState(false);
 
   const handleDataFromChildren = async (childData) => {
     setProfile(childData);
@@ -26,6 +27,10 @@ function App() {
       const res2 = await getUsers(res.groupIds);
       setUsers(res2);
     }
+  }
+
+  const handleTaskFromCreate = (childTask) => {
+    setTask(childTask);
   }
 
   useEffect(() => {
@@ -46,11 +51,11 @@ function App() {
     },
     {
       path: '/create',
-      element: <Create profile={profile} users={users} admin={admin}/>
+      element: <Create profile={profile} users={users} admin={admin} onData={handleTaskFromCreate}/>
     },
     {
       path: '/Tasks',
-      element: <Tasks profile={profile} workspace={workspace} users={users} />
+      element: <Tasks profile={profile} workspace={workspace} users={users} passedTask={task} />
     },
     {
       path: '/stats',

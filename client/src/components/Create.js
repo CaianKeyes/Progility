@@ -4,7 +4,7 @@ import { createTask } from "../apiServices/createTask";
 import AddUser from "./addUser";
 import Navbar from "./navbar";
 
-function Create({profile, users, admin}) {
+function Create({profile, users, admin, onData}) {
   const [title, setTitle] = useState('');
   const [timeSpan, setTimespan] = useState('');
   const [description, setDescription] = useState('');
@@ -41,9 +41,11 @@ function Create({profile, users, admin}) {
         timespan: timeSpan,
         description: description,
         requirements: requirmentsList,
-      })
+      });
       if (location !== 'general') {
         acceptTask(location, task.id);
+      } else {
+        onData(task);
       }
     }
   }

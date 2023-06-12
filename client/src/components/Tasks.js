@@ -5,7 +5,7 @@ import Navbar from "./navbar";
 import TaskHeader from "./taskHeader";
 import TaskList from "./taskList";
 
-function Tasks({profile, workspace, users}) {
+function Tasks({profile, workspace, users, passedTask}) {
   const [admin, setAdmin] = useState(false);
   const [generalTasks, setGeneralTasks] = useState([]);
   const [personalTasks, setPersonalTasks] = useState([]);
@@ -68,6 +68,22 @@ function Tasks({profile, workspace, users}) {
       setTaskList(completedTasks);
     }
   }, [generalTasks, activeTasks, personalTasks, selector, completedTasks]);
+
+  // adds a task to genral if its created
+  useEffect(() => {
+    if(passedTask) {
+      let boo = true;
+      for (const task of generalTasks) {
+        if (task.id === passedTask.id) {
+          boo = false;
+        }
+      }
+  
+      if (boo) {
+        setGeneralTasks((res) => [...res, passedTask]);
+      }
+    }
+  }, [passedTask]);
 
   const hanndleDataFromChild = (childData) => {
     setSelector(childData);
