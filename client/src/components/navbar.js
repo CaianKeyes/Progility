@@ -18,7 +18,7 @@ function Navbar () {
   return <div className="navbar">
     <p className="logo">PROGILITY</p>
 
-    <div className="navlinks">
+    <div className="nav_links">
       <p onClick={handleTasks} className="nav_link">Tasks</p>
       <p onClick={handleCreate}className="nav_link">Create Task</p>
       <p onClick={handleStats}className="nav_link">Stats</p>

@@ -6,7 +6,7 @@ function TaskList({tasks, profile, selector, workspace, onData, users}) {
   ))
 
   return <div className="grid">
-    <div className="mappedTasks">
+    <div className="mapped_tasks">
       <ul>
         {mappedTasks}
       </ul>
