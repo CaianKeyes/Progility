@@ -4,7 +4,7 @@ import { register } from '../apiServices/register';
 import { createWorkspace } from '../apiServices/createWorkspace';
 import '../App.css';
 
-function Register({ onData}) {
+function Register({onData}) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

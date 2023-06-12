@@ -34,7 +34,8 @@ function App() {
   }
 
   useEffect(() => {
-    if(profile.id === workspace.adminId && workspace.id) {
+    const isAdmin = profile.id === workspace.adminId;
+    if(isAdmin && workspace.id) {
       setAdmin(true)
     }
   }, [profile, workspace]);

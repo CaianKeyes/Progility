@@ -52,7 +52,8 @@ function Tasks({profile, workspace, users, passedTask}) {
       })
     }
 
-    if (profile.id === workspace.adminId && profile.id) {
+    const isAdmin = profile.id === workspace.adminId;
+    if (isAdmin && profile.id) {
       setAdmin(true);
     }
   }, [workspace, profile]);
