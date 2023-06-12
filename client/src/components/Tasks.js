@@ -83,6 +83,7 @@ function Tasks({profile, workspace, users, passedTask}) {
         setGeneralTasks((res) => [...res, passedTask]);
       }
     }
+    // eslint-disable-next-line
   }, [passedTask]);
 
   const hanndleDataFromChild = (childData) => {
