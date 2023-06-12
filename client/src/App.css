@@ -154,6 +154,16 @@
 
 .timespan {
   font-size: 20px;
+  margin-right: 3px;
+}
+
+.timestamp {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.username {
+  margin-right: 8px;
 }
 
 .down_arrow {

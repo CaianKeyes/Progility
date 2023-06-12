@@ -72,7 +72,7 @@ function Task ({task, profile, selector, workspace, onData, users}) {
         <button onClick={handleCancel} className="submit personal_button">Cancel</button>
       </div>)
     } else if (selector === 'active' || selector === 'completed') {
-      setTaskBtn(<p className="form">User: {username}</p>)
+      setTaskBtn(<p className="form username">User: {username}</p>)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selector, username]);
@@ -82,13 +82,13 @@ function Task ({task, profile, selector, workspace, onData, users}) {
       <h2 className="form">{task.title}</h2>
       {extraInfo}
       <div className="time_btn">
+        <div onClick={handleArrow} className={arrow}></div>
         <p className="form timespan">{task.timespan}h</p>
-          <div onClick={handleArrow} className={arrow}></div>
       </div>
     </div>
     <div className="right">
       {taskBtn}
-      <p className="form">{new Date(task.timestamp).toLocaleString()}</p>
+      <p className="form timestamp">{new Date(task.timestamp).toLocaleString()}</p>
     </div>
   </div>
 }
