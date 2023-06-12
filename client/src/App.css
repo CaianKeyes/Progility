@@ -65,7 +65,16 @@
 }
 
 .check {
-  height: 15px;
+margin-bottom: 13px;
+margin-left: 5px;
+}
+
+.admin_checkbox {
+  display: flex;
+}
+
+.admin_title {
+  margin-bottom: 15px;
 }
 
 .submit {

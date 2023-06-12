@@ -4,7 +4,7 @@ import { register } from '../apiServices/register';
 import { createWorkspace } from '../apiServices/createWorkspace';
 import '../App.css';
 
-function Register({ onData, profile }) {
+function Register({ onData}) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -79,14 +79,15 @@ function Register({ onData, profile }) {
           className='form input'
         ></input>
 
-        <h3 className='form'>Admin:</h3>
-        <input
-          type='checkbox'
-          checked={isChecked}
-          onChange={handleCheckbox}
-          className='form check'
-        ></input>
-        <br />
+        <div className='admin_checkbox'>
+        <h3 className='form admin_title'>Admin:</h3>
+          <input
+            type='checkbox'
+            checked={isChecked}
+            onChange={handleCheckbox}
+            className='form check'
+          ></input>
+        </div>
 
         <button className='form submit' type='submit'>Sign-Up</button>
       </form>
