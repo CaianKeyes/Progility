@@ -32,13 +32,13 @@ function Stats ({users, workspace, admin}) {
         break;
 
       case('2a'):
-        const res = formatData(filterByDates(completedTasks, 30),users);
-        setChart(renderBarCharts(res[0], res[1]))
+        const formattedTasksMonthly = formatData(filterByDates(completedTasks, 30),users);
+        setChart(renderBarCharts(formattedTasksMonthly[0], formattedTasksMonthly[1]));
         break;
 
       case('3a'):
-        const res2 = formatData(filterByDates(completedTasks, 7),users);
-        setChart(renderBarCharts(res2[0], res2[1]))
+        const formattedTasksWeekly = formatData(filterByDates(completedTasks, 7),users);
+        setChart(renderBarCharts(formattedTasksWeekly [0], formattedTasksWeekly [1]));
         break;
 
       case('4a'):
