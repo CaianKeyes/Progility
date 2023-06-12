@@ -28,32 +28,17 @@ function Stats ({users, workspace, admin}) {
           resultTask.push(user.tasksCompleted);
           resultHour.push(user.hoursCompleted);
         }
-        setChart(<>
-          <h2 className="completed">Tasks Completed:</h2>
-          <BarChart data={resultTask} users={users} />
-          <h2 className="completed">Hours Completed:</h2>
-          <BarChart data={resultHour} users={users} />
-        </>)
+        setChart(renderBarCharts(resultTask, resultHour));
         break;
 
       case('2a'):
         const res = formatData(filterByDates(completedTasks, 30),users);
-        setChart(<>
-          <h2 className="completed">Tasks Completed:</h2>
-          <BarChart data={res[0]} users={users} />
-          <h2 className="completed">Hours Completed:</h2>
-          <BarChart data={res[1]} users={users} />
-        </>)
+        setChart(renderBarCharts(res[0], res[1]))
         break;
 
       case('3a'):
         const res2 = formatData(filterByDates(completedTasks, 7),users);
-        setChart(<>
-          <h2 className="completed">Tasks Completed:</h2>
-          <BarChart data={res2[0]} users={users} />
-          <h2 className="completed">Hours Completed:</h2>
-          <BarChart data={res2[1]} users={users} />
-        </>)
+        setChart(renderBarCharts(res2[0], res2[1]))
         break;
 
       case('4a'):
@@ -64,7 +49,17 @@ function Stats ({users, workspace, admin}) {
       default:
         console.log('selector does not exsist');
     }
-  }, [users, selector, completedTasks])
+    // eslint-disable-next-line
+  }, [users, selector, completedTasks]);
+
+  const renderBarCharts = (data1, data2) => {
+    return <div>
+      <h2 className="completed">Tasks Completed:</h2>
+      <BarChart data={data1} users={users} />
+      <h2 className="completed">Hours Completed:</h2>
+      <BarChart data={data2} users={users} />
+    </div>
+  }
 
   const handleDataFromChild = (childData) => {
     setSelector(childData);

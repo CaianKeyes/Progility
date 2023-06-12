@@ -35,7 +35,6 @@ function Create({profile, users, admin}) {
     }
 
     if (profile.workspaceId) {
-      console.log(location);
       const task = await createTask({
         wID: profile.workspaceId,
         title: title,

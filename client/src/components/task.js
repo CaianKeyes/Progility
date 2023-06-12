@@ -74,7 +74,7 @@ function Task ({task, profile, selector, workspace, onData, users}) {
     } else if (selector === 'active' || selector === 'completed') {
       setTaskBtn(<p className="form username">User: {username}</p>)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [selector, username]);
 
   return <div className="task">

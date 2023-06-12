@@ -14,6 +14,7 @@ function Tasks({profile, workspace, users}) {
   const [taskList, setTaskList] = useState([]);
   const [selector, setSelector] = useState('general');
 
+  // handles sorting the data
   useEffect(() => {
     if (workspace.id) {
       getActiveTasks(workspace.activeTasksId).then(res => {
@@ -72,6 +73,7 @@ function Tasks({profile, workspace, users}) {
     setSelector(childData);
   }
 
+  // allows for button presses to be reactive
   const handleListSwitch = (method, task) => {
     switch (method) {
       case 'accept':

@@ -272,11 +272,11 @@ margin-left: 5px;
   flex-direction: column;
   justify-content: space-between;
   height: 320px;
-  width: 60px;
-  margin-left: 10px;
+  width: 50px;
+  margin-left: 20px;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-bottom: 15px;
 }
 

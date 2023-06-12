@@ -8,7 +8,7 @@ function TaskList({tasks, profile, selector, workspace, onData, users}) {
   return <div className="grid">
     <div className="mappedTasks">
       <ul>
-          {mappedTasks}
+        {mappedTasks}
       </ul>
     </div>
   </div>

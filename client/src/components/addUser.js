@@ -24,7 +24,6 @@ function AddUser({workspaceId}) {
       ></input>
       <button type="submit" className="submit">Add</button>
     </form>
-
   </div>
 }
 
