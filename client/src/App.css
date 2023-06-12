@@ -1,5 +1,5 @@
 .register {
-  background-color: white; 
+  background-color: white;
   border-radius: 15px;
   margin: 40px;
   padding: 15px;
@@ -12,52 +12,52 @@
 }
 
 .input {
-  margin-top: 5px;
-  margin-bottom: 15px;
-  width: 90%;
-  height: 25px;
+  background-color: #e3e3e3;
   border-radius: 20px;
   border: none;
-  background-color: #e3e3e3;
   font-size: 17px;
+  height: 25px;
+  margin-bottom: 15px;
+  margin-top: 5px;
   padding-left: 10px;
+  width: 90%;
 }
 
 .req_input {
-  width: 80%;
-  height: 25px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border: none;
   background-color: #e3e3e3;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border: none;
   font-size: 17px;
-  padding-left: 10px;
+  height: 25px;
   margin: 1px;
+  padding-left: 10px;
+  width: 80%;
 }
 
 .add {
-  height: 27px;
-  width: 10%;
   background-color: #e3e3e3;
-  border: none;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
+  border: none;
+  cursor: pointer;
+  height: 27px;
   margin: 1px;
   vertical-align: top;
-  cursor: pointer;
+  width: 10%;
 }
 
 .number {
-  margin-top: 5px;
-  margin-bottom: 15px;
-  width: 40px;
-  height: 25px;
+  background-color: #e3e3e3;
   border-radius: 20px;
   border: none;
-  background-color: #e3e3e3;
   font-size: 17px;
+  height: 25px;
+  margin-bottom: 15px;
+  margin-top: 5px;
   padding-left: 10px;
   padding-right: 5px;
+  width: 40px;
 }
 
 .title {
@@ -65,8 +65,8 @@
 }
 
 .check {
-margin-bottom: 13px;
-margin-left: 5px;
+  margin-bottom: 13px;
+  margin-left: 5px;
 }
 
 .admin_checkbox {
@@ -79,22 +79,22 @@ margin-left: 5px;
 
 .submit {
   background-color: #f19406;
-  height: 25px;
-  width: 100px;
-  border: none;
   border-radius: 50px;
+  border: none;
+  color: white;
   font-size: 15px;
   font-weight: bold;
-  color: white;
+  height: 25px;
   margin-right: 15px;
+  width: 100px;
 }
 
 .navbar {
-  display: flex;
+  align-items: center;
   background-color: white;
+  display: flex;
   font-family: arial;
   height: 40px;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -109,37 +109,37 @@ margin-left: 5px;
 }
 
 .nav_link {
-  margin-right: 20px;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .header {
-  display: flex;
-  justify-content: space-around;
   background-color: #f19406;
-  padding: 15px;
-  font-family: arial;
   color: white;
   cursor: pointer;
+  display: flex;
+  font-family: arial;
+  justify-content: space-around;
+  padding: 15px;
 }
 
 .mapped_tasks {
-  grid-column: 2;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  grid-column: 2;
 }
 
 .task {
-  margin: 10px 10%;
-  margin-right: 150px;
-  width: 500px;
-  min-height: 100px;
   background-color: white;
+  border-radius: 20px;
   display: flex;
   justify-content: space-between;
-  border-radius: 20px;
+  margin: 10px 10%;
+  margin-right: 150px;
+  min-height: 100px;
   padding: 10px;
+  width: 500px;
 }
 
 .left, .right {
@@ -167,8 +167,8 @@ margin-left: 5px;
 }
 
 .timestamp {
-  width: 50px;
   margin-left: 10px;
+  width: 50px;
 }
 
 .username {
@@ -176,57 +176,57 @@ margin-left: 5px;
 }
 
 .down_arrow {
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 15px solid black;
+  cursor: pointer;
+  height: 0;
   margin-left: 15px;
   margin-top: 5px;
-  cursor: pointer;
+  transform: translateX(-50%);
+  width: 0;
 }
 
 
 .up_arrow {
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
+  border-bottom: 15px solid black;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 15px solid black;
+  cursor: pointer;
+  height: 0;
   margin-left: 15px;
   margin-top: 3px;
-  cursor: pointer;
+  transform: translateX(-50%);
+  width: 0;
 }
 
 .description {
   font-family: arial;
-  margin-top: 15px;
-  margin-left: 10px;
   font-size: 17.5px;
+  margin-left: 10px;
+  margin-top: 15px;
 }
 
 .requiremnets {
   font-family: arial;
   font-size: 17.5px;
-  margin-top: 15px;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .dropdown {
+  background-color: #f19406;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  height: 30px;
   margin: 8px;
   margin-left: 0px;
   margin-top: 0px;
-  height: 30px;
-  width: 180px;
-  background-color: #f19406;
-  border: none;
-  border-radius: 20px;
   padding: 1px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
+  width: 180px;
 }
 
 .location_dropdown {
@@ -244,103 +244,103 @@ margin-left: 5px;
 
 .completed {
   font-family: arial;
-  margin-top: 15px;
   margin-left: 25px;
+  margin-top: 15px;
 }
 
 .chart {
-  position: relative;
-  flex: 1;
-  display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  height: 330px;
-  padding: 20px;
-  padding-top: 5px;
-  padding-bottom: 0px;
+  background-color: white;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
+  display: flex;
+  flex: 1;
+  height: 330px;
+  justify-content: space-between;
   margin: 20px;
   margin-left: 0px;
   margin-top: 0px;
-  background-color: white;
+  padding: 20px;
+  padding-bottom: 0px;
+  padding-top: 5px;
+  position: relative;
 }
 
 .y_axsis {
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 320px;
-  width: 50px;
-  margin-left: 20px;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
-  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  justify-content: space-between;
+  margin-left: 20px;
   padding-bottom: 15px;
+  padding-left: 10px;
+  width: 50px;
 }
 
 .label {
-  margin-top: 17px;
   align-self: flex-start;
+  margin-top: 17px;
 }
 
 .bar {
-  width: 30px;
   background-color: #007bff;
   margin-right: 5px;
+  width: 30px;
 }
 
 .line {
-  position: absolute;
   background-color: black;
-  width: 94%;
-  height: 1px;
   bottom: 18px;
+  height: 1px;
+  position: absolute;
+  width: 94%;
 }
 
 .stats_block {
   display: grid;
-  width: 100%;
   margin: 10px 0px;
+  width: 100%;
 }
 
 .user_stat1 {
-  grid-row: 1;
   font-family: arial;
+  grid-row: 1;
   justify-self: start;
   margin-left: 20px;
 }
 
 .user_stat2 {
-  grid-row: 1;
   font-family: arial;
+  grid-row: 1;
   justify-self: center;
 }
 
 .user_stat3 {
-  grid-row: 1;
   font-family: arial;
+  grid-row: 1;
   justify-self: end;
   margin-right: 20px;
 }
 
 .divider {
-  width: 100%;
-  height: 1px;
   background-color: black;
+  height: 1px;
+  width: 100%;
 }
 
 .stats_header {
-  height: 60px;
+  align-items: center;
   background-color: #f19406;
   display: flex;
-  align-items: center;
+  height: 60px;
 }
 
 .stats_header .form {
-  margin-left: 20px;
   color: white;
+  margin-left: 20px;
 }
 
 .stats_header .dropdown {
