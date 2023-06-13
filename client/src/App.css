@@ -148,6 +148,14 @@
   justify-content: space-between;
 }
 
+.left {
+  width: 400px;
+}
+
+.right {
+  width: 100px;
+}
+
 .accept {
   align-self: flex-end;
   margin-left: 5px;
@@ -352,6 +360,10 @@
 @media screen and (min-width: 1200px) {
   .task {
     width: 800px
+  }
+
+  .left {
+    width: 700px;
   }
 
   .register {
