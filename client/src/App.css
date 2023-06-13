@@ -348,3 +348,29 @@
   color: black;
   margin-left: 10px;
 }
+
+@media screen and (min-width: 1200px) {
+  .task {
+    width: 800px
+  }
+
+  .register {
+    margin: 40px 300px;
+  }
+
+  .chart {
+    margin-right: 200px;
+  }
+
+  .y_axsis {
+    margin-left: 200px;
+  }
+
+  .completed {
+    margin-left: 220px;
+  }
+
+  .logo {
+    margin-left: 30px;
+  }
+}
