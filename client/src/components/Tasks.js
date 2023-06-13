@@ -48,6 +48,7 @@ function Tasks({profile, workspace, users, passedTask}) {
       });
       // gets completed tasks
       getCompletedTasks(workspace.completedTasksId).then(res => {
+        res.reverse();
         setCompletedTasks(res);
       })
     }
