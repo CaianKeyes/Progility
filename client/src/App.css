@@ -318,6 +318,7 @@
   grid-row: 1;
   justify-self: start;
   margin-left: 20px;
+  width: 70px;
 }
 
 .user_stat2 {
@@ -331,6 +332,7 @@
   grid-row: 1;
   justify-self: end;
   margin-right: 20px;
+  width: 70px;
 }
 
 .divider {
