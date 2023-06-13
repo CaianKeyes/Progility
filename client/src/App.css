@@ -304,7 +304,7 @@
   bottom: 18px;
   height: 1px;
   position: absolute;
-  width: 94%;
+  width: 93%;
 }
 
 .stats_block {
@@ -384,5 +384,9 @@
 
   .logo {
     margin-left: 30px;
+  }
+
+  .line {
+    width: 95%;
   }
 }
