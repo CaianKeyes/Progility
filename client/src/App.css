@@ -357,6 +357,7 @@
   background-color: white;
   color: black;
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 @media screen and (min-width: 1200px) {
@@ -365,7 +366,7 @@
   }
 
   .left {
-    width: 700px;
+    width: 650px;
   }
 
   .register {
