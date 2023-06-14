@@ -90,7 +90,7 @@ function Create({profile, users, admin, onData}) {
 
         <ul>
           {requirmentsList.map(item => (
-            <li key={item}>{item}</li>
+            <li className="requirment_item" key={item}>{item}</li>
           ))}
         </ul>
 

@@ -222,6 +222,10 @@
   margin-top: 15px;
 }
 
+.requirment_item {
+  font-family: arial;
+}
+
 .dropdown {
   background-color: #f19406;
   border-radius: 20px;
