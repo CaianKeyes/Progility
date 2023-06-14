@@ -1,6 +1,13 @@
 # Progility
-This app will allow an admin to create tasks that can be sent specifically to a member of the group or post it to a general list where it can be accepted by a member. Each task will contain a description, a list of requirements and the time it should take to complete. The task lists will be ordered oldest first. It will also allow the admin to track the stats of the different members of the group, seeing how many tasks they have completed and how many hours they have done. A post only displays its title in the list, but once clicked on shows all the details.
 
-I would like the stats to be weekly, monthly and all-time and be available for the whole group and each member individually.
+Progility is a web app that allows an admin to create a workspace and add other users to it. The admin can then create tasks, which include a title, a description, a list of requirements, a date of creation, and an estimated time the task will take.
 
-Extra features I would like to add if possible: urgent Tasks, Admin must verify a task before it can be completed, comments can be left when submitting tasks.
+The non-admin users only have access to the General and Personal tabs in tasks. In the General tab, they can accept tasks, and once accepted, the tasks are moved to their Personal tab. From there, they can choose to complete the task or cancel it and return it to the General tab.
+
+The admin can see much more. They have access to the Active and Completed tabs as well. The Active tab shows which tasks have been accepted by whom, and the Completed tab shows tasks that have been completed, listed in the order of newest first.
+
+The admin can also create tasks and choose to send them to the General Tasks section or send them directly to a user.
+
+Finally, the admin can view the Stats page. This page displays two bar charts: one for tasks completed and one for hours completed. The bar charts can be switched to show all-time, monthly, or weekly data.
+
+Additionally, there is a table that shows the users' all-time data.
