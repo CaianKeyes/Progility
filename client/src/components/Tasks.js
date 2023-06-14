@@ -5,7 +5,7 @@ import Navbar from "./navbar";
 import TaskHeader from "./taskHeader";
 import TaskList from "./taskList";
 
-function Tasks({profile, workspace, users, passedTask}) {
+function Tasks({profile, workspace, users}) {
   const [admin, setAdmin] = useState(false);
   const [generalTasks, setGeneralTasks] = useState([]);
   const [personalTasks, setPersonalTasks] = useState([]);
@@ -13,6 +13,11 @@ function Tasks({profile, workspace, users, passedTask}) {
   const [completedTasks, setCompletedTasks] = useState([]);
   const [taskList, setTaskList] = useState([]);
   const [selector, setSelector] = useState('general');
+
+  useEffect(() => {
+    console.log('genral tasks', generalTasks)
+    console.log('tasklist', taskList);
+  }, [generalTasks, taskList]);
 
   // handles sorting the data
   useEffect(() => {
@@ -70,23 +75,6 @@ function Tasks({profile, workspace, users, passedTask}) {
       setTaskList(completedTasks);
     }
   }, [generalTasks, activeTasks, personalTasks, selector, completedTasks]);
-
-  // adds a task to genral if its created
-  useEffect(() => {
-    if(passedTask) {
-      let boo = true;
-      for (const task of generalTasks) {
-        if (task.id === passedTask.id) {
-          boo = false;
-        }
-      }
-  
-      if (boo) {
-        setGeneralTasks((res) => [...res, passedTask]);
-      }
-    }
-    // eslint-disable-next-line
-  }, [passedTask]);
 
   const hanndleDataFromChild = (childData) => {
     setSelector(childData);
