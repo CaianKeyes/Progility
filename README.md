@@ -1,5 +1,13 @@
 # Progility
 
+# Screenshots
+
+<p align="center">
+  <img src="Images/Screenshot 2023-07-08 at 08.41.28.png" />
+  <img src="Images/Screenshot 2023-07-08 at 08.39.57.png" />
+  <img src="Images/Screenshot 2023-07-08 at 08.41.00.png" />
+</p>
+
 instructions:
 The database used is postgres. you'll have to link your local postgres using the db file. Then use the sync functions in each model to create the tables. then just run the backend and the react app. To get all the features of the app when you register make sure you tick the admin box.
 
