@@ -1,5 +1,7 @@
 # Progility
 
+Progility is designed to increase productivity in the workplace through ease of task delegation. It also allows for Staff tracking to measuer their productivity.
+
 # Screenshots
 
 <p align="center">
@@ -8,19 +10,18 @@
   <img src="Images/Screenshot 2023-07-08 at 08.41.00.png" />
 </p>
 
-instructions:
-The database used is postgres. you'll have to link your local postgres using the db file. Then use the sync functions in each model to create the tables. then just run the backend and the react app. To get all the features of the app when you register make sure you tick the admin box.
+# Getting Started
 
+## Client
 
-Description of project:
-Progility is a web app that allows an admin to create a workspace and add other users to it. The admin can then create tasks, which include a title, a description, a list of requirements, a date of creation, and an estimated time the task will take.
+run ```npm install``` to install nessasary dependenceys
+then ```npm start``` to run the app in your browser
 
-The non-admin users only have access to the General and Personal tabs in tasks. In the General tab, they can accept tasks, and once accepted, the tasks are moved to their Personal tab. From there, they can choose to complete the task or cancel it and return it to the General tab.
+## Server
 
-The admin can see much more. They have access to the Active and Completed tabs as well. The Active tab shows which tasks have been accepted by whom, and the Completed tab shows tasks that have been completed, listed in the order of newest first.
+run ```npm install``` to install nessasary dependenceys
+then ```node index.js``` to start the server
 
-The admin can also create tasks and choose to send them to the General Tasks section or send them directly to a user.
+## database
 
-Finally, the admin can view the Stats page. This page displays two bar charts: one for tasks completed and one for hours completed. The bar charts can be switched to show all-time, monthly, or weekly data.
-
-Additionally, there is a table that shows the users' all-time data.
+Progility uses postgres an dit must be running for the app to work, then in ```/server/db.js``` add your details to connect to postgres and run the sync function to create the tables
