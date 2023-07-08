@@ -12,16 +12,23 @@ Progility is designed to increase productivity in the workplace through ease of 
 
 # Getting Started
 
+1. clone the repo
+  ```git clone https://github.com/CaianKeyes/Progility.git```
+
 ## Client
 
-run ```npm install``` to install nessasary dependenceys
-then ```npm start``` to run the app in your browser
+2. run ```npm install``` to install nessasary dependenceys
+3. run ```npm start``` to run the app in your browser
 
 ## Server
 
-run ```npm install``` to install nessasary dependenceys
-then ```node index.js``` to start the server
+4. run ```npm install``` to install nessasary dependenceys
+5. run ```node index.js``` to start the server
 
 ## database
 
-Progility uses postgres an dit must be running for the app to work, then in ```/server/db.js``` add your details to connect to postgres and run the sync function to create the tables
+6.   in ```/server/db.js``` add your details to connect to postgres
+7.   run the sync function, in the models directory, to create the tables
+
+# Tech Stack
+React, Koa, Sequlize and postgres
