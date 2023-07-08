@@ -31,4 +31,7 @@ Progility is designed to increase productivity in the workplace through ease of 
 7.   run the sync function, in the models directory, to create the tables
 
 # Tech Stack
-React, Koa, Sequlize and postgres
+* [React](https://react.dev/)
+* [Koa](https://koajs.com/)
+* [Sequlize](https://sequelize.org/)
+* [postgres](https://www.postgresql.org/)
