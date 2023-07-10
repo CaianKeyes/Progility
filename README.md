@@ -1,6 +1,6 @@
 # Progility
 
-Progility is designed to increase productivity in the workplace through ease of task delegation. It also allows for Staff tracking to measuer their productivity.
+Progility is designed to increase productivity in the workplace through ease of task delegation. It also allows for Staff tracking to measure their productivity.
 
 # Screenshots
 
